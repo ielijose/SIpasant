@@ -3,8 +3,14 @@
 	"description": "The Laravel Framework.",
 	"keywords": ["framework", "laravel"],
 	"license": "MIT",
+	"require-dev": {
+    	"way/generators": "2.*"
+	},
 	"require": {
 		"laravel/framework": "4.2.*",
+		"webpatser/laravel-uuid": "dev-master",
+		"ielijose/heywire-laravel": "dev-master",
+		"way/database": "dev-master",
 		"thujohn/pdf": "dev-master"
 	},
 	"autoload": {

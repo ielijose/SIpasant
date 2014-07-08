@@ -19,8 +19,10 @@ class CreateEstudiantesTable extends Migration {
 			$table->string('nombre');
 			$table->string('apellido');
             $table->string('ci');
+            $table->string('carnet');
             $table->string('direccion');
-            $table->string('telefono');
+            $table->string('telefono_movil');
+            $table->string('telefono_hogar');
             $table->integer('usuario_id')->unsigned();
 			$table->foreign('usuario_id')->references('id')->on('usuarios');
            
