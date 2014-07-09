@@ -18,7 +18,7 @@ class CreateUsuariosTable extends Migration {
 
 			$table->string('nombre');
 			$table->string('usuario');
-            $table->string('contrasena');
+            $table->string('password');
             $table->string('correo');
             
             $table->enum('tipo', ['estudiante', 'coordinador', 'root']);

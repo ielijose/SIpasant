@@ -17,8 +17,8 @@ class CreatePasantiasTable extends Migration {
 			$table->increments('id');
 
 			$table->string('actividad');
-            $table->string('suervisor_nombre');
-            $table->string('suervisor_cargo');
+            $table->string('supervisor_nombre');
+            $table->string('supervisor_cargo');
 
             $table->string('departamento');
             $table->string('fecha_inicio');

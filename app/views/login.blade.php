@@ -7,11 +7,11 @@
 <head>
 	<!-- BEGIN META SECTION -->
 	<meta charset="utf-8">
-	<title>Pixit - Responsive Boostrap3 Admin</title>
+	<title>Login | SIpasant</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta content="" name="description" />
 	<meta content="themes-lab" name="author" />
-	<link rel="shortcut icon" href="assets/img/favicon.png">
+	<link rel="shortcut icon" href="favicon.ico">
 	<!-- END META SECTION -->
 	<!-- BEGIN MANDATORY STYLE -->
 	<link href="assets/css/icons/icons.min.css" rel="stylesheet">
@@ -31,7 +31,7 @@
 	<!-- START SIGNUP BOX -->
 	<div class="row alert alert-info">
 		<div class="col-md-2">
-			<img class="img-rounded img-responsive" src="/assets/img/luz.jpg" alt="">
+			<img class="img-rounded img-responsive" src="/assets/img/luz.png" alt="">
 		</div>
 
 		<div class="col-md-8">
@@ -126,15 +126,11 @@
 							{{ $errors->first('usuario', '<div class="alert alert-danger">  :message</div>') }}
 							{{ Form::text('usuario', Input::old('usuario'), array('placeholder'=>'Usuario', 'class' => 'input-field')) }}
 
-							{{ $errors->first('contrasena', '<div class="alert alert-danger">  :message</div>') }}
-							{{ Form::password('contrasena',  array('placeholder'=>'Contraseña', 'class' => 'input-field')) }}
+							{{ $errors->first('password', '<div class="alert alert-danger">  :message</div>') }}
+							{{ Form::password('password',  array('placeholder'=>'Contraseña', 'class' => 'input-field')) }}
 						
 							<button id="submit-form" class="btn btn-login ladda-button" data-style="expand-left"><span class="ladda-label">Registrarse</span></button>
 						</form>
-						<div class="login-links">
-							<a href="/password-recovery">Recuperar contraseña</a>
-							<br>
-						</div>
 					</div>
 				</div>
 			</div>

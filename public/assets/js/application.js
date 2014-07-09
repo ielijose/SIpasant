@@ -30,7 +30,7 @@ Modernizr.addTest('retina', function () {
 
 Modernizr.load([{
     test: Modernizr.retina,
-    yep: '/backend/assets/plugins/retina.js'
+    yep: '/assets/plugins/retina.js'
 }]);
 
 
@@ -241,7 +241,7 @@ function chatSidebar() {
             var chat_message = '<li class="img">' +
                 '<span>' +
                 '<div class="chat-detail chat-right">' +
-                '<img src="/backend/assets/img/avatars/avatar1.png" data-retina-src="assets/img/avatars/avatar1_2x.png"/>' +
+                '<img src="/assets/img/avatars/avatar1.png" data-retina-src="assets/img/avatars/avatar1_2x.png"/>' +
                 '<div class="chat-detail">' +
                 '<div class="chat-bubble">' +
                 $(this).val() +
@@ -290,10 +290,10 @@ $('.theme-color').click(function (e) {
 /* If skin color selected in menu, we display it */
 if($.cookie('style-color')){
     var color_ = 'color-'+$.cookie('style-color');
-    $('#theme-color').attr("href", "/backend/assets/css/colors/" + color_ + ".css");
+    $('#theme-color').attr("href", "/assets/css/colors/" + color_ + ".css");
 }
 else{
-    $('#theme-color').attr("href", "/backend/assets/css/colors/color-dark.css");
+    $('#theme-color').attr("href", "/assets/css/colors/color-dark.css");
 }
 
 //*********************************** CUSTOM FUNCTIONS *****************************//
@@ -616,7 +616,7 @@ if ($('.table-dynamic').length && $.fn.dataTable) {
         if ($(this).hasClass('table-tools')) {
             opt.sDom = "<'row'<'col-md-6'f><'col-md-6'T>r>t<'row'<'col-md-6'i><'spcol-md-6an6'p>>",
             opt.oTableTools = {
-                "sSwfPath": "/backend/assets/plugins/datatables/swf/copy_csv_xls_pdf.swf",
+                "sSwfPath": "/assets/plugins/datatables/swf/copy_csv_xls_pdf.swf",
                 "aButtons": ["csv", "xls", "pdf", "print"]
             };
         }

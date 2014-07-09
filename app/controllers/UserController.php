@@ -35,7 +35,9 @@ class UserController extends BaseController {
 		$user = new User(Input::all());
 		if ($user->save())
 		{
-			return Redirect::to('/panel/');
+			Auth::loginUsingId($user->id);
+
+			return Redirect::to('/');
 		}
 		return Redirect::back()->withInput()->withErrors($user->getErrors());
 	}

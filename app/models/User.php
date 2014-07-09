@@ -111,4 +111,9 @@ class User extends Model implements UserInterface, RemindableInterface {
 		return $this->email;
 	}
 
+	public function estudiante()
+    {
+        return $this->hasOne('Estudiante', 'usuario_id', 'id');
+    }
+
 }
