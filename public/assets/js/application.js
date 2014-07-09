@@ -506,6 +506,7 @@ if ($('.datetimepicker').length && $.fn.datetimepicker) {
 if ($('.pickadate').length && $.fn.pickadate) {
     $('.pickadate').each(function () {
         $(this).pickadate();
+        $(this).css("z-index", 999999999);
     });
 }
 

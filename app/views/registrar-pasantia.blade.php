@@ -106,13 +106,13 @@
 
                                     <div class="form-group">
                                         <label for="fecha_inicio">Fecha de inicio *</label>
-                                        <input class="pickadate form-control" type="text" placeholder="Click me to see modal calendar" />          
+                                        <input id="fecha_inicio" name="fecha_inicio" type="date" class="form-control required"> 
 
                                     </div>
 
                                     <div class="form-group">
                                         <label for="fecha_fin">Fecha de culminación *</label>
-                                        <input class="pickadate form-control" type="text" placeholder="Click me to see modal calendar" />
+                                        <input id="fecha_fin" name="fecha_fin" type="date" class="form-control required">
                                     </div>
 
 
