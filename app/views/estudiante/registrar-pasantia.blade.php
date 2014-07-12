@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('estudiante.layouts.master')
 
 @section('css')
 <link rel="stylesheet" href="assets/plugins/wizard/wizard.css">

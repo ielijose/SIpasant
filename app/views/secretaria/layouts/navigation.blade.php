@@ -12,7 +12,7 @@
             </a>
             <a class="navbar-brand" href="index.html"></a>
         </div>
-        <div class="navbar-center">Pasantias LICOM</div>
+        <div class="navbar-center">Secretaria - Pasantias LICOM</div>
         <div class="navbar-collapse collapse">
             <!-- BEGIN TOP NAVIGATION MENU -->
             <ul class="nav navbar-nav pull-right header-menu">

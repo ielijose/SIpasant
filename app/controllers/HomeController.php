@@ -15,18 +15,6 @@ class HomeController extends BaseController {
 	|
 	*/
 
-	public function dashboard()
-	{
-		//dd(Auth::user()->estudiante);
-		return View::make('dashboard');
-	}
-
 	
-
-	public function registrarPasantia()
-	{
-		//dd(Auth::user()->estudiante);
-		return View::make('registrar-pasantia');
-	}
 
 }

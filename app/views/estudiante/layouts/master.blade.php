@@ -28,12 +28,12 @@
 
 <body data-page="">
     <!-- BEGIN TOP MENU -->
-    @include('layouts.navigation')
+    @include('estudiante.layouts.navigation')
     <!-- END TOP MENU -->
     <!-- BEGIN WRAPPER -->
     <div id="wrapper">
         <!-- BEGIN MAIN SIDEBAR -->
-        @include('layouts.sidebar')
+        @include('estudiante.layouts.sidebar')
         <!-- END MAIN SIDEBAR -->
         <!-- BEGIN MAIN CONTENT -->
         @yield('content')
@@ -41,7 +41,7 @@
     </div>
     <!-- END WRAPPER -->
     <!-- BEGIN CHAT MENU -->
-    @include('layouts.chat')
+    @include('estudiante.layouts.chat')
     <!-- END CHAT MENU -->
     <!-- BEGIN MANDATORY SCRIPTS -->
     <script src="{{ asset('/assets/plugins/jquery-1.11.js') }}"></script>
