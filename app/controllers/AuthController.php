@@ -25,20 +25,6 @@ class AuthController extends BaseController {
 		if ($validator->fails()) {
 			return Redirect::back()->withErrors($validator)->withInput(Input::except('contrasena_login'));
 		} else {
-			/*$userdata = array(
-				'usuario' 	=> Input::get('usuario_login'),
-				'contrasena' => Input::get('contrasena_login')
-				);		
-
-			if ($r = Auth::attempt($userdata)) {
-
-				return Redirect::to('panel');
-			} else {
-				dd($r);
-				Session::flash('message', 'Credenciales invalidas.');
-				return Redirect::back();
-			}*/
-
 
 			$userdata = array(
 				'usuario' => Input::get('usuario_login'),

@@ -5748,3 +5748,15 @@ a.note-item:hover {
     display: block;
     clear: both;
 }
+
+
+/* */
+
+
+.fselect label{
+    padding-left: 35px !important;
+}
+
+.fselect .ui-radio{
+   margin: 0 !important;
+}

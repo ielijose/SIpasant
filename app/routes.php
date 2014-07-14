@@ -12,3 +12,8 @@ Route::group(['before' => 'auth'], function () {
     require (__DIR__ . '/routes/' . Auth::user()->tipo . '.php');
 
 });
+
+if(!Auth::user())
+Route::get('/', function(){
+	return Redirect::to('login');
+});

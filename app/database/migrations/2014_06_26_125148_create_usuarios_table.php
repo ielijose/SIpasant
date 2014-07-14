@@ -17,6 +17,7 @@ class CreateUsuariosTable extends Migration {
 			$table->increments('id');
 
 			$table->string('nombre');
+			$table->string('apellido');
 			$table->string('usuario');
             $table->string('password');
             $table->string('correo');

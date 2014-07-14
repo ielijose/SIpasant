@@ -8,6 +8,7 @@
 <link href="assets/plugins/pickadate/themes/default.css" rel="stylesheet">
 <link href="assets/plugins/pickadate/themes/default.date.css" rel="stylesheet">
 <link href="assets/plugins/pickadate/themes/default.time.css" rel="stylesheet">
+
 @stop
 
 @section('content')
@@ -25,8 +26,8 @@
                             <h3><strong>Registrar</strong> Pasantia</h3>
                             <p>Completa el siguiente formulario:</p>
                             <!-- BEGIN FORM WIZARD WITH VALIDATION -->
-                            <form class="form-wizard" action="#">
-                                {{--<h1>Estudiante</h1>
+                            <form class="form-wizard" action="/registrar" method="POST">
+                                <h1>Estudiante</h1>
                                 <section>
                                     <div class="form-group col-md-6">
                                         <label for="ci">Cédula de identidad *</label>
@@ -96,25 +97,48 @@
                                     </div>
                                     
                                     <p>(*) Obligatorio</p>
-                                </section>--}}
+                                </section>
                                 <h1>Actividad</h1>
                                 <section>
-                                    <div class="form-group">
+                                    <div class="form-group col-md-12">
                                         <label for="actividad">Actividad a realizar *</label>
                                         <input id="actividad" name="actividad" type="text" class="form-control required">
                                     </div>
 
-                                    <div class="form-group">
+                                    <div class="form-group col-md-12">
+                                        <label for="tipo">Tipo *</label>
+                                        <fieldset data-role="controlgroup" data-type="horizontal" class="fselect">
+                                            <input type="radio" name="tipo" id="radio-choice-t-6a" value="medio_tiempo">
+                                            <label for="radio-choice-t-6a">Medio tiempo</label>
+                                            <input type="radio" name="tipo" id="radio-choice-t-6b" value="tiempo_completo">
+                                            <label for="radio-choice-t-6b">Tiempo completo</label>
+                                        </fieldset>
+                                    </div>
+
+                                    <div class="form-group col-md-6">
                                         <label for="fecha_inicio">Fecha de inicio *</label>
                                         <input id="fecha_inicio" name="fecha_inicio" type="date" class="form-control required"> 
 
                                     </div>
 
-                                    <div class="form-group">
+                                    <div class="form-group col-md-6">
                                         <label for="fecha_fin">Fecha de culminación *</label>
                                         <input id="fecha_fin" name="fecha_fin" type="date" class="form-control required">
                                     </div>
 
+                                    
+
+                                    <div class="form-group col-md-12">
+                                        <label for="horario">Horario *</label>
+                                        <input id="horario" name="horario" type="text" class="form-control required">
+                                    </div>
+
+                                    <div class="form-group col-md-12">
+                                        <label for="descripcion">Descripción *</label>
+                                        <input id="descripcion" name="descripcion" type="text" class="form-control required">
+                                    </div>
+                                    
+                                    <p>(*) Obligatorio</p>
 
                                 </section>
                             </form>
@@ -122,7 +146,7 @@
 
                         </div>
 
-                        
+
                     </div>
                 </div>
             </div>
@@ -133,20 +157,18 @@
 @stop
 
 @section('javascript')
-<script src="assets/plugins/datetimepicker/jquery.datetimepicker.js"></script>
-    <script src="assets/plugins/bootstrap-datepicker/bootstrap-datepicker.js"></script>
-    <script src="assets/plugins/pickadate/picker.js"></script>
-    <script src="assets/plugins/pickadate/picker.date.js"></script>
-    <script src="assets/plugins/pickadate/picker.time.js"></script>
-    <script src="assets/plugins/bootstrap-switch/bootstrap-switch.js"></script>
-    <script src="assets/plugins/bootstrap-progressbar/bootstrap-progressbar.js"></script>
 
-    
 <script type="text/javascript" src="assets/plugins/jquery-validation/jquery.validate.min.js"></script>
 <script type="text/javascript" src="assets/plugins/jquery-validation/additional-methods.min.js"></script>
 <script src="assets/plugins/wizard/wizard.js"></script>
 <script src="assets/plugins/jquery-steps/jquery.steps.js"></script>
 <script src="assets/js/form_wizard.js"></script>
 
+<script>
+$(document).on("ready", function(){
+    $("#radio-choice-t-6a").prop('checked', true);
+})
+
+</script>
 
 @stop

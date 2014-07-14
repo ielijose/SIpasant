@@ -27,19 +27,19 @@
     $.fn.wizard.logging = false;
     
     var WizardCard = function(wizard, card, index, prev, next) {
-        this.wizard 	= wizard;
-        this.index 		= index;
-        this.prev 		= prev;
-        this.next 		= next;
-        this.el 		= card;
-        this.title 		= card.find("h3").first().text();
-        this.name 		= card.data("cardname") || this.title;
+        this.wizard     = wizard;
+        this.index      = index;
+        this.prev       = prev;
+        this.next       = next;
+        this.el         = card;
+        this.title      = card.find("h3").first().text();
+        this.name       = card.data("cardname") || this.title;
 
-        this.nav 		= this._createNavElement(this.title, index);
+        this.nav        = this._createNavElement(this.title, index);
 
-        this._disabled 	= false;
-        this._loaded 	= false;
-        this._events =	 {};
+        this._disabled  = false;
+        this._loaded    = false;
+        this._events =   {};
     };
     
     WizardCard.prototype = {
@@ -402,8 +402,8 @@
                                         '<div class="wizard-buttons-container">',
                                             '<button class="btn wizard-cancel wizard-close" type="button">Cancel</button>',
                                             '<div class="btn-group-single pull-right">',
-                                                '<button class="btn wizard-back" type="button">Anterior</button>',
-                                                '<button class="btn btn-primary wizard-next" type="button">Siguiente</button>',
+                                                '<button class="btn wizard-back" type="button">Back</button>',
+                                                '<button class="btn btn-primary wizard-next" type="button">Next</button>',
                                             '</div>',
                                         '</div>',
                                     '</div>',
@@ -453,50 +453,50 @@
         
         _create: function(markup) {
             this.markup = $(markup);
-            this.title					= 	this.markup.data('title');
-            this.submitCards 			= 	this.markup.find(".wizard-error,.wizard-failure,.wizard-success,.wizard-loading");
-            this.el						=	$(this.wizard_template.join('\n'));
+            this.title                  =   this.markup.data('title');
+            this.submitCards            =   this.markup.find(".wizard-error,.wizard-failure,.wizard-success,.wizard-loading");
+            this.el                     =   $(this.wizard_template.join('\n'));
             $('body').append(this.el);
             
-            this.modal 					= 	this.el.modal({
+            this.modal                  =   this.el.modal({
                 keyboard: this.args.keyboard,
                 show: this.args.show,
                 backdrop: this.args.backdrop
             });
             
-            this.dimensions				=	{
+            this.dimensions             =   {
                                                 contentHeight: this.args.contentHeight,
                                                 contentWidth: this.args.contentWidth
                                             };
-            this.dialog 				=	this.modal.find('.wizard-dialog');
-            this.content 				= 	this.modal.find('.wizard-content');
-            this.header 				= 	this.modal.find('.wizard-header');
-            this.body 					= 	this.modal.find('.wizard-body');
-            this.wizardSteps			= 	this.modal.find('.wizard-steps');
-            this.wizardCards			=	this.modal.find('.wizard-cards');
-            this.wizardCardContainer	=	this.modal.find('.wizard-card-container');
+            this.dialog                 =   this.modal.find('.wizard-dialog');
+            this.content                =   this.modal.find('.wizard-content');
+            this.header                 =   this.modal.find('.wizard-header');
+            this.body                   =   this.modal.find('.wizard-body');
+            this.wizardSteps            =   this.modal.find('.wizard-steps');
+            this.wizardCards            =   this.modal.find('.wizard-cards');
+            this.wizardCardContainer    =   this.modal.find('.wizard-card-container');
             this.wizardCardContainer
                 .append(this.markup.find('.wizard-card'))
                 .append(this.submitCards);
-            this.navContainer 			= 	this.modal.find('.wizard-nav-container');
-            this.navList				= 	this.modal.find('.wizard-nav-list');
-            this.progressContainer		= 	this.modal.find('.wizard-progress-container');
-            this.progress				= 	this.progressContainer.find('.progress-bar');
-            this.closeButton 			= 	this.modal.find('button.wizard-close.close');
-            this.cardsContainer			=	this.modal.find('wizard-cards-container');
-            this.form					=	this.modal.find('form');
-            this.footer 				= 	this.modal.find(".wizard-footer");
-            this.cancelButton 			= 	this.footer.find(".wizard-cancel");
-            this.backButton 			= 	this.footer.find(".wizard-back");
-            this.nextButton 			= 	this.footer.find(".wizard-next");
+            this.navContainer           =   this.modal.find('.wizard-nav-container');
+            this.navList                =   this.modal.find('.wizard-nav-list');
+            this.progressContainer      =   this.modal.find('.wizard-progress-container');
+            this.progress               =   this.progressContainer.find('.progress-bar');
+            this.closeButton            =   this.modal.find('button.wizard-close.close');
+            this.cardsContainer         =   this.modal.find('wizard-cards-container');
+            this.form                   =   this.modal.find('form');
+            this.footer                 =   this.modal.find(".wizard-footer");
+            this.cancelButton           =   this.footer.find(".wizard-cancel");
+            this.backButton             =   this.footer.find(".wizard-back");
+            this.nextButton             =   this.footer.find(".wizard-next");
             
-            this._cards 				= 	[];
-            this.cards 					= 	{};
-            this._readyToSubmit 		= 	false;
-            this.percentComplete 		=	0;
-            this._submitting 			= 	false;
-            this._events 				= 	{};
-            this._firstShow 			= 	true;
+            this._cards                 =   [];
+            this.cards                  =   {};
+            this._readyToSubmit         =   false;
+            this.percentComplete        =   0;
+            this._submitting            =   false;
+            this._events                =   {};
+            this._firstShow             =   true;
             
             this._createCards();
 
@@ -511,7 +511,7 @@
             this.form.addClass(this.args.formClass);
             
             // Register Array Holder for popovers
-            this.popovers				= [];
+            this.popovers               = [];
 
             var self = this;
             var _close = function() {
@@ -530,7 +530,7 @@
                 event.data.setCard(index);
             });
             
-            if ( (this.title || '').length!= 0 ) {
+            if ( this.title.length != 0 ) {
                 this.setTitle(this.title);
             }
             
@@ -576,7 +576,7 @@
             this.wizardCardContainer.height(this.dimensions.cardContainer);
             
             // Reposition
-            this.dimensions.offset = ($(window).height() - this.dialog.height()) / 2;			
+            this.dimensions.offset = ($(window).height() - this.dialog.height()) / 2;           
             this.dialog.css({
                 'margin-top': this.dimensions.offset + 'px',
                 'padding-top': 0
@@ -877,7 +877,7 @@
 
                 if (this.args.progressBarCurrent) {
                     this.percentComplete = i * 100.0 / this._cards.length;
-                    this.updateProgressBar(this.percentComplete);					
+                    this.updateProgressBar(this.percentComplete);                   
                 }
                 else {
                     var lastPercent = this.percentComplete;

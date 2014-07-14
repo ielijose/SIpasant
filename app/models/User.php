@@ -23,10 +23,11 @@ class User extends Model implements UserInterface, RemindableInterface {
 	 */
 	protected $hidden = array('password', 'remember_token');
 
-	protected $fillable = ['nombre', 'usuario', 'password', 'correo', 'tipo'];
+	protected $fillable = ['nombre', 'apellido', 'usuario', 'password', 'correo', 'tipo'];
 
 	protected static $rules = [
         'nombre' => 'required',
+        'apellido' => 'required',
         'usuario' => 'required|unique:usuarios',
         'password' => 'required',
         'correo' => 'required|email|unique:usuarios',
@@ -35,6 +36,7 @@ class User extends Model implements UserInterface, RemindableInterface {
     //Use this for custom messages
     protected static $messages = [
         'nombre.required' => 'El nombre es obligatorio.',
+        'apellido.required' => 'El apellido es obligatorio.',
         'usuario.required' => 'El usuario es obligatorio.',
         'usuario.unique' => 'El usuario ya esta en uso.',
         'correo.required' => 'El correo es obligatorio.',
@@ -114,6 +116,18 @@ class User extends Model implements UserInterface, RemindableInterface {
 	public function estudiante()
     {
         return $this->hasOne('Estudiante', 'usuario_id', 'id');
+    }
+
+    public function getSemestre()
+    {
+        $semestre = Semestre::where('activo', '=', 1)->limit(1)->get();
+        return $semestre[0]->semestre;
+    }
+
+    public function getSemestreId()
+    {
+        $semestre = Semestre::where('activo', '=', 1)->limit(1)->get();
+        return $semestre[0]->id;
     }
 
 }

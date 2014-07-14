@@ -78,7 +78,7 @@ li.wizard-nav-item {
 }
 
 .wizard-nav-list > li.already-visited > a.wizard-nav-link {
-	color:#3276B1;
+	color:#08C;
 	cursor:pointer;
 }
 
@@ -87,11 +87,11 @@ li.wizard-nav-item {
 }
 
 .wizard-nav-item .already-visited .active {
-	background-color:#3276B1;
+	background-color:#08C;
 }
 
 .wizard-nav-list li.active > a {
-	background-color:#3276B1;
+	background-color:#08C;
 }
 
 

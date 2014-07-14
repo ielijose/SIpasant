@@ -88,3 +88,10 @@ Route::filter('csrf', function()
 		throw new Illuminate\Session\TokenMismatchException;
 	}
 });
+
+Route::filter('canRegister', function()
+{
+	if(Auth::user()->getSemestreId() == Auth::user()->estudiante->pasantia->semestre){
+		return Redirect::to('/')->with('alert', ['type' => 'danger', 'message' => 'Ya registraste una pasantia este semestre.']);	
+	}
+});

@@ -120,6 +120,9 @@
 							{{ $errors->first('nombre', '<div class="alert alert-danger">  :message</div>') }}
 							{{ Form::text('nombre', Input::old('nombre'), array('placeholder'=>'Nombre', 'class' => 'input-field')) }}
 
+							{{ $errors->first('apellido', '<div class="alert alert-danger">  :message</div>') }}
+							{{ Form::text('apellido', Input::old('apellido'), array('placeholder'=>'Apellido', 'class' => 'input-field')) }}
+
 							{{ $errors->first('correo', '<div class="alert alert-danger">  :message</div>') }}
 							{{ Form::text('correo', Input::old('correo'), array('placeholder'=>'E-mail', 'class' => 'input-field')) }}
 

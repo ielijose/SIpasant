@@ -12,9 +12,9 @@ class Estudiante extends Eloquent {
         return $this->belongsTo('User', 'usuario_id', 'id');
     }
 
-	public function parroquias()
+	public function pasantia()
     {
-        return $this->hasMany('Parroquia', 'municipio_id', 'id');
+        return $this->hasOne('Pasantia');
     }
 
 }
