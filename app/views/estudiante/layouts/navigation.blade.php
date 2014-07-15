@@ -10,7 +10,7 @@
             <a id="menu-medium" class="sidebar-toggle tooltips">
                 <i class="fa fa-outdent"></i>
             </a>
-            <a class="navbar-brand" href="index.html"></a>
+            <a class="navbar-brand" href="/"></a>
         </div>
         <div class="navbar-center">Estudiantes - Pasantias LICOM <strong>({{ Auth::user()->getSemestre() }})</strong></div>
         <div class="navbar-collapse collapse">

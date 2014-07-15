@@ -23,7 +23,7 @@ class CreatePasantiasTable extends Migration {
             $table->string('departamento');
             $table->string('fecha_inicio');
             $table->string('fecha_fin');
-            $table->enum('tipo', ['medio_tiempo', 'tiempo_comleto']);
+            $table->enum('tipo', ['medio_tiempo', 'tiempo_completo']);
             $table->string('horario');
             $table->string('descripcion');
             $table->integer('nota');            

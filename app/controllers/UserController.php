@@ -12,6 +12,7 @@ class UserController extends BaseController {
 	public function register()
 	{
 		$user = new User(Input::all());
+		//$user->tipo = 'coordinador';
 		if ($user->save())
 		{
 			Auth::loginUsingId($user->id);

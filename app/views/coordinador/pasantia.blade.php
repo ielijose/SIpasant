@@ -1,4 +1,4 @@
-@extends('estudiante.layouts.master')
+@extends('coordinador.layouts.master')
 
 @section('content')
 
@@ -13,13 +13,8 @@
                 </div>
             @endif
 
-        	@if(!isset(Auth::user()->estudiante->pasantia->id))
+        	@if(isset($pasantia))
 
-
-            <h1> Aun no has registrado alguna pasantia, <a href="/registrar-pasantia" class="">Registra una aquí</a></h1>
-            <br><br><br>
-
-            @else
 
             
 
@@ -31,22 +26,22 @@
 
             <div class="page-title">
                 <i class="icon-custom-left"></i>
-                <h3><img class="m-r-20" src="assets/img/various/invoice.png" alt="invoice"><strong>Pasantia n° {{ Auth::user()->estudiante->pasantia->id }} </strong> 
-                    <small>{{ Auth::user()->estudiante->pasantia->created_at }}</small></h3>
+                <h3><img class="m-r-20" src="/assets/img/various/invoice.png" alt="invoice"><strong>Pasantia n° {{ $pasantia->id }} </strong> 
+                    <small>{{ $pasantia->created_at }}</small></h3>
                 <br>
             </div>
             <div class="row">
                 <div class="col-md-12">
                     <div class="tabcordion">
                         <ul id="myTab" class="nav nav-tabs">
-                            <li class="active"><a href="#estudiante" data-toggle="tab">Estudiante</a></li>
-                            <li><a href="#pasantia" data-toggle="tab">Pasantia</a></li>
-                            <li><a href="#procesos" data-toggle="tab">Procesos 
+                            <li class="active"><a href="#order_resume" data-toggle="tab">Estudiante</a></li>
+                            <li><a href="#order_details" data-toggle="tab">Pasantia</a></li>
+                            <li><a href="#order_history" data-toggle="tab">Procesos 
                                 <span class="m-l-10 badge badge-primary">3</span></a>
                             </li>
                         </ul>
                         <div id="myTabContent" class="tab-content">
-                            <div class="tab-pane fade active in" id="estudiante">
+                            <div class="tab-pane fade active in" id="order_resume">
                                 <div class="row p-20">
                                     <div class="col-md-12">
                                         <h3 class="m-t-0 m-b-20">Datos del estudiante:</h3>
@@ -54,49 +49,49 @@
                                             <div class="form-group">
                                                 <div class="col-sm-2">Nombre:</div>
                                                 <div class="col-sm-7">
-                                                    <strong>{{ Auth::user()->estudiante->nombre }}</strong>
+                                                    <strong>{{ $pasantia->estudiante->nombre }}</strong>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <div class="col-sm-2">Apellido:
                                                 </div>
                                                 <div class="col-sm-7">
-                                                    <strong>{{ Auth::user()->estudiante->apellido }}</strong>
+                                                    <strong>{{ $pasantia->estudiante->apellido }}</strong>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <div class="col-sm-2">CI:
                                                 </div>
                                                 <div class="col-sm-7">
-                                                    <strong>{{ Auth::user()->estudiante->ci }}</strong>
+                                                    <strong>{{ $pasantia->estudiante->ci }}</strong>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <div class="col-sm-2">Carnet:
                                                 </div>
                                                 <div class="col-sm-7">
-                                                    <strong>{{ Auth::user()->estudiante->carnet }}</strong>
+                                                    <strong>{{ $pasantia->estudiante->carnet }}</strong>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <div class="col-sm-2">Dirección:
                                                 </div>
                                                 <div class="col-sm-7">
-                                                    <strong>{{ Auth::user()->estudiante->direccion }}</strong>
+                                                    <strong>{{ $pasantia->estudiante->direccion }}</strong>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <div class="col-sm-2">Teléfono movil:
                                                 </div>
                                                 <div class="col-sm-7">
-                                                    <strong>{{ Auth::user()->estudiante->telefono_movil }}</strong>
+                                                    <strong>{{ $pasantia->estudiante->telefono_movil }}</strong>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <div class="col-sm-2">Teléfono hogar:
                                                 </div>
                                                 <div class="col-sm-7">
-                                                    <strong>{{ Auth::user()->estudiante->telefono_hogar }}</strong>
+                                                    <strong>{{ $pasantia->estudiante->telefono_hogar }}</strong>
                                                 </div>
                                             </div>                                            
                                         </form>
@@ -104,7 +99,7 @@
                                     
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="pasantia">
+                            <div class="tab-pane fade" id="order_details">
                                 <div class="row p-20">
                                     <div class="col-md-6">
                                         <h3 class="m-t-0 m-b-20">Datos de la actividad:</h3>
@@ -112,49 +107,49 @@
                                             <div class="form-group">
                                                 <div class="col-sm-5">Actividad:</div>
                                                 <div class="col-sm-7">
-                                                    <strong>{{ Auth::user()->estudiante->pasantia->actividad }}</strong>
+                                                    <strong>{{ $pasantia->actividad }}</strong>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <div class="col-sm-5">Fecha de inicio:
                                                 </div>
                                                 <div class="col-sm-7">
-                                                    <strong>{{ Auth::user()->estudiante->pasantia->fecha_inicio }}</strong>
+                                                    <strong>{{ $pasantia->fecha_inicio }}</strong>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <div class="col-sm-5">Fecha de culminación:
                                                 </div>
                                                 <div class="col-sm-7">
-                                                    <strong>{{ Auth::user()->estudiante->pasantia->fecha_fin }}</strong>
+                                                    <strong>{{ $pasantia->fecha_fin }}</strong>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <div class="col-sm-5">Tipo:
                                                 </div>
                                                 <div class="col-sm-7">
-                                                    <strong>{{ Auth::user()->estudiante->pasantia->getTipo() }}</strong>
+                                                    <strong>{{ $pasantia->getTipo() }}</strong>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <div class="col-sm-5">Horario:
                                                 </div>
                                                 <div class="col-sm-7">
-                                                    <strong>{{ Auth::user()->estudiante->pasantia->horario }}</strong>
+                                                    <strong>{{ $pasantia->horario }}</strong>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <div class="col-sm-5">Descripción:
                                                 </div>
                                                 <div class="col-sm-7">
-                                                    <strong>{{ Auth::user()->estudiante->pasantia->descripcion }}</strong>
+                                                    <strong>{{ $pasantia->descripcion }}</strong>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <div class="col-sm-5">Teléfono hogar:
                                                 </div>
                                                 <div class="col-sm-7">
-                                                    <strong>{{ Auth::user()->estudiante->telefono_hogar }}</strong>
+                                                    <strong>{{ $pasantia->estudiante->telefono_hogar }}</strong>
                                                 </div>
                                             </div>  
                                             <hr>
@@ -162,7 +157,12 @@
                                                 <div class="col-sm-5">  <strong>Estado:</strong>
                                                 </div>
                                                 <div class="col-sm-7">
-                                                    <strong>{{ Auth::user()->estudiante->pasantia->getEstadoBadge() }}</strong>
+                                                    <strong>{{ $pasantia->getEstadoBadge() }}</strong>
+                                                    @if($pasantia->getEstado() == 'pendiente')
+                                                    <hr>
+                                                    <a href="/pasantia/action/aceptar/{{ $pasantia->id}}" type="button" class="btn btn-success">Aceptar</a>
+                                                    <a href="/pasantia/action/rechazar/{{ $pasantia->id}}" type="button" class="btn btn-danger">Rechazar</a>
+                                                    @endif
                                                 </div>
                                             </div>
 
@@ -175,21 +175,21 @@
                                             <div class="form-group">
                                                 <div class="col-sm-5">Nombre:</div>
                                                 <div class="col-sm-7">
-                                                    <strong>{{ Auth::user()->estudiante->pasantia->supervisor_nombre }}</strong>
+                                                    <strong>{{ $pasantia->supervisor_nombre }}</strong>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <div class="col-sm-5">Cargo:
                                                 </div>
                                                 <div class="col-sm-7">
-                                                    <strong>{{ Auth::user()->estudiante->pasantia->supervisor_cargo }}</strong>
+                                                    <strong>{{ $pasantia->supervisor_cargo }}</strong>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <div class="col-sm-5">Departamento:
                                                 </div>
                                                 <div class="col-sm-7">
-                                                    <strong>{{ Auth::user()->estudiante->pasantia->departamento }}</strong>
+                                                    <strong>{{ $pasantia->departamento }}</strong>
                                                 </div>
                                             </div>                                                                                                                                   
                                         </form>
@@ -200,28 +200,28 @@
                                             <div class="form-group">
                                                 <div class="col-sm-5">Empresa:</div>
                                                 <div class="col-sm-7">
-                                                    <strong>{{ Auth::user()->estudiante->pasantia->empresa->empresa }}</strong>
+                                                    <strong>{{ $pasantia->empresa->empresa }}</strong>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <div class="col-sm-5">Dirección:
                                                 </div>
                                                 <div class="col-sm-7">
-                                                    <strong>{{ Auth::user()->estudiante->pasantia->empresa->direccion }}</strong>
+                                                    <strong>{{ $pasantia->empresa->direccion }}</strong>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <div class="col-sm-5">Teléfono:
                                                 </div>
                                                 <div class="col-sm-7">
-                                                    <strong>{{ Auth::user()->estudiante->pasantia->empresa->telefono }}</strong>
+                                                    <strong>{{ $pasantia->empresa->telefono }}</strong>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <div class="col-sm-5">Correo electronico:
                                                 </div>
                                                 <div class="col-sm-7">
-                                                    <strong>{{ Auth::user()->estudiante->pasantia->empresa->correo }}</strong>
+                                                    <strong>{{ $pasantia->empresa->correo }}</strong>
                                                 </div>
                                             </div>                                                                                       
                                         </form>
@@ -230,7 +230,7 @@
                                
                             </div>
                             
-                            <div class="tab-pane fade" id="procesos">
+                            <div class="tab-pane fade" id="order_history">
                                 <div class="row p-20">
                                     <div class="col-md-12">
                                         <table id="products-table" cellpadding="0" cellspacing="0" border="0" class="table table-tools table-hover">

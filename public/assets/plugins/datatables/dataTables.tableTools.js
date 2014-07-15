@@ -1,4 +1,4 @@
-/*! TableTools 2.2.1-dev
+/*! TableTools 2.2.1
  * 2009-2014 SpryMedia Ltd - datatables.net/license
  *
  * ZeroClipboard 1.0.4
@@ -8,7 +8,7 @@
 /**
  * @summary     TableTools
  * @description Tools and buttons for DataTables
- * @version     2.2.0
+ * @version     2.2.1
  * @file        dataTables.tableTools.js
  * @author      SpryMedia Ltd (www.sprymedia.co.uk)
  * @contact     www.sprymedia.co.uk/contact
@@ -1119,10 +1119,10 @@ TableTools.prototype = {
 				$(that.s.dt.nTBody).off( 'click.DTTT_Select', 'tr' );
 				$(that.dom.container).empty();
 
+				// Remove the instance
 				var idx = $.inArray( that, TableTools._aInstances );
 				if ( idx !== -1 ) {
 					TableTools._aInstances.splice( idx, 1 );
-					console.log( 'removed inst', idx );
 				}
 			}
 		} );
@@ -2892,8 +2892,8 @@ TableTools.buttons = TableTools.BUTTONS;
 TableTools.classes = {
 	"container": "DTTT_container",
 	"buttons": {
-		"normal": "btn btn-default DTTT_button",
-		"disabled": "btn btn-default DTTT_disabled"
+		"normal": "DTTT_button",
+		"disabled": "DTTT_disabled"
 	},
 	"collection": {
 		"container": "DTTT_collection",
@@ -2974,7 +2974,7 @@ TableTools.prototype.CLASS = "TableTools";
  *  @type	  String
  *  @default   See code
  */
-TableTools.version = "2.2.1-dev";
+TableTools.version = "2.2.1";
 
 
 

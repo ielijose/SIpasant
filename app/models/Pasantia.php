@@ -17,23 +17,38 @@ class Pasantia extends Eloquent {
         return $this->hasOne('Empresa');
     }
 
-    public function getEstado()
+    public function getEstadoBadge()
     {
     	switch ($this->estado) {
     		case 'pendiente':
-    			return '<button rel="tooltip" type="button" class="btn btn-warning m-b-10" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="El coordinador aun no aprueba la pasantia.">Pendiente</button>';
-    			break;
-    		
-    		default:
-    			# code...
-    			break;
-    	}
-        
-    }
+         return '<button rel="tooltip" type="button" class="btn btn-warning m-b-10" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="El coordinador aun no aprueba la pasantia.">Pendiente</button>';
+         break;
 
-    public function getTipo()
-    {
-    	return ucfirst(str_replace('_', ' ', $this->tipo));
-    }
+         case 'aceptado':
+         return '<button rel="tooltip" type="button" class="btn btn-success m-b-10" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="El coordinador acepto la pasantia.">Aceptado</button>';
+         break;
+
+         case 'rechazado':
+         return '<button rel="tooltip" type="button" class="btn btn-danger m-b-10" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="El coordinador rechazo la pasantia.">Rechazado</button>';
+
+         case 'aprobado':
+         return '<button rel="tooltip" type="label" class="label btn-success m-b-10" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="El estudiante aprobo la pasantia.">Aprobado</button>';
+
+         case 'reprobado':
+         return '<button rel="tooltip" type="label" class="label btn-danger" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="El estudiante reprobo la pasantia.">Reprobado</button>';
+         break;
+     }
+
+ }
+
+ public function getEstado()
+ {
+    return $this->estado;
+}
+
+public function getTipo()
+{
+   return ucfirst(str_replace('_', ' ', $this->tipo));
+}
 
 }
