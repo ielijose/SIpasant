@@ -4,17 +4,6 @@ class SecretariaController extends BaseController {
 
 	public function dashboard()
 	{
-
-		$p = Pasantia::where('estado', '=', 'aceptado')->get();
-		foreach ($p as $key => $d) {
-			if(!isset($d->proceso->id)){
-				$pr = new Proceso;
-				$pr->aprobacion = $d->created_at;
-				$pr->pasantia_id = $d->id;
-				$pr->save();
-			}			
-		}
-
 		$data['pendientes'] = count(Pasantia::where('estado', '=', 'pendiente')->get());
 		$data['aceptados'] = count(Pasantia::where('estado', '=', 'aceptado')->get());
 		$data['rechazados'] = count(Pasantia::where('estado', '=', 'rechazado')->get());

@@ -9,6 +9,10 @@
                 <a href="/pasantias"><i class="glyph-icon flaticon-pages"></i><span class="sidebar-text">Pasantias</span></a>
             </li>
 
+            <li>
+                <a href="/semestres"><i class="fa fa-tags"></i><span class="sidebar-text">Semestres</span></a>
+            </li>
+
 
             {{--<li>
                 <a href="#"><i class="glyph-icon flaticon-shopping80"></i><span class="sidebar-text">Productos</span>

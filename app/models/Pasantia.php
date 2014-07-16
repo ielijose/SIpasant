@@ -74,4 +74,15 @@ class Pasantia extends Eloquent {
         return date("d M Y  H:i:s",strtotime($value));
     }
 
+    public function scopeSelf($query)
+    {
+        return $query->where('estudiante_id', '=', Auth::user()->estudiante->id);
+    }
+    public function scopeCurrent($query)
+    {
+        $s = Semestre::current()->get()[0];
+        return $query->where('semestre', '=', $s->id);
+    }
+
+
 }

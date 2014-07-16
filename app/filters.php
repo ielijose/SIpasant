@@ -97,7 +97,7 @@ Route::filter('canRegister', function()
 });
 
 Route::filter('canGenerate', function()
-{	if(!isset(Auth::user()->estudiante->pasantia->id) || (Auth::user()->estudiante->pasantia->estado != 'aceptado')){
+{	if(!isset(Auth::user()->estudiante->pasantia[0]->id) || (Auth::user()->estudiante->pasantia[0]->estado != 'aceptado')){
 		return Redirect::to('/')->with('alert', ['type' => 'danger', 'message' => 'No puedes generar la carta.']);	
 	}
 });

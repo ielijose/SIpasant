@@ -5,7 +5,7 @@ class EstudianteController extends BaseController {
 	public function dashboard()
 	{
 		//echo Auth::user()->estudiante->pasantia->toJson(); exit;
-		return View::make('estudiante.dashboard');
+		return View::make('estudiante.dashboard', ['pasantia' => Auth::user()->estudiante->getCurrentPasantia()]);
 	}
 
 	public function registrarPasantia()
@@ -44,7 +44,8 @@ class EstudianteController extends BaseController {
 
 	public function generarCarta()
 	{
-		$html = utf8_decode(View::make('estudiante.carta'));
+		$p = Pasantia::current()->self()->get()[0];
+		$html = utf8_decode(View::make('estudiante.carta', ['p' => $p]));
 		return PDF::load($html, 'A4', 'portrait')->show();
 	}
 }

@@ -14,7 +14,14 @@ class Estudiante extends Eloquent {
 
 	public function pasantia()
     {
-        return $this->hasOne('Pasantia');
+        return $this->hasMany('Pasantia');
+    }
+
+    public function getCurrentPasantia()
+    {
+        
+        $p = Pasantia::self()->current()->get();
+        return $p[0];
     }
 
 }

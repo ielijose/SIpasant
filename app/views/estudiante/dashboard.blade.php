@@ -13,7 +13,7 @@
             </div>
             @endif
 
-            @if(!isset(Auth::user()->estudiante->pasantia->id))
+            @if(!isset($pasantia))
 
 
             <h1> Aun no has registrado alguna pasantia, <a href="/registrar-pasantia" class="">Registra una aquí</a></h1>
@@ -31,8 +31,8 @@
 
             <div class="page-title">
                 <i class="icon-custom-left"></i>
-                <h3><img class="m-r-20" src="assets/img/various/invoice.png" alt="invoice"><strong>Pasantia n° {{ Auth::user()->estudiante->pasantia->id }} </strong> 
-                    <small>{{ Auth::user()->estudiante->pasantia->created_at }}</small></h3>
+                <h3><img class="m-r-20" src="assets/img/various/invoice.png" alt="invoice"><strong>Pasantia n° {{ $pasantia->id }} </strong> 
+                    <small>{{ $pasantia->created_at }}</small></h3>
                     <br>
                 </div>
                 <div class="row">
@@ -41,9 +41,9 @@
                             <ul id="myTab" class="nav nav-tabs">
                                 <li class="active"><a href="#estudiante" data-toggle="tab">Estudiante</a></li>
                                 <li><a href="#pasantia" data-toggle="tab">Pasantia</a></li>
-                                @if(isset(Auth::user()->estudiante->pasantia->proceso->id))
+                                @if(isset($pasantia->proceso->id))
                                 <li><a href="#procesos" data-toggle="tab">Procesos 
-                                    <span class="m-l-10 badge badge-primary">{{ Auth::user()->estudiante->pasantia->proceso->getStep() }}</span></a>
+                                    <span class="m-l-10 badge badge-primary">{{ $pasantia->proceso->getStep() }}</span></a>
                                 </li>
                                 @endif
                             </ul>
@@ -114,42 +114,42 @@
                                                 <div class="form-group">
                                                     <div class="col-sm-5">Actividad:</div>
                                                     <div class="col-sm-7">
-                                                        <strong>{{ Auth::user()->estudiante->pasantia->actividad }}</strong>
+                                                        <strong>{{ $pasantia->actividad }}</strong>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="col-sm-5">Fecha de inicio:
                                                     </div>
                                                     <div class="col-sm-7">
-                                                        <strong>{{ Auth::user()->estudiante->pasantia->fecha_inicio }}</strong>
+                                                        <strong>{{ $pasantia->fecha_inicio }}</strong>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="col-sm-5">Fecha de culminación:
                                                     </div>
                                                     <div class="col-sm-7">
-                                                        <strong>{{ Auth::user()->estudiante->pasantia->fecha_fin }}</strong>
+                                                        <strong>{{ $pasantia->fecha_fin }}</strong>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="col-sm-5">Tipo:
                                                     </div>
                                                     <div class="col-sm-7">
-                                                        <strong>{{ Auth::user()->estudiante->pasantia->getTipo() }}</strong>
+                                                        <strong>{{ $pasantia->getTipo() }}</strong>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="col-sm-5">Horario:
                                                     </div>
                                                     <div class="col-sm-7">
-                                                        <strong>{{ Auth::user()->estudiante->pasantia->horario }}</strong>
+                                                        <strong>{{ $pasantia->horario }}</strong>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="col-sm-5">Descripción:
                                                     </div>
                                                     <div class="col-sm-7">
-                                                        <strong>{{ Auth::user()->estudiante->pasantia->descripcion }}</strong>
+                                                        <strong>{{ $pasantia->descripcion }}</strong>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -164,7 +164,7 @@
                                                     <div class="col-sm-5">  <strong>Estado:</strong>
                                                     </div>
                                                     <div class="col-sm-7">
-                                                        <strong>{{ Auth::user()->estudiante->pasantia->getEstadoBadge() }}</strong>
+                                                        <strong>{{ $pasantia->getEstadoBadge() }}</strong>
                                                     </div>
                                                 </div>
 
@@ -177,21 +177,21 @@
                                                 <div class="form-group">
                                                     <div class="col-sm-5">Nombre:</div>
                                                     <div class="col-sm-7">
-                                                        <strong>{{ Auth::user()->estudiante->pasantia->supervisor_nombre }}</strong>
+                                                        <strong>{{ $pasantia->supervisor_nombre }}</strong>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="col-sm-5">Cargo:
                                                     </div>
                                                     <div class="col-sm-7">
-                                                        <strong>{{ Auth::user()->estudiante->pasantia->supervisor_cargo }}</strong>
+                                                        <strong>{{ $pasantia->supervisor_cargo }}</strong>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="col-sm-5">Departamento:
                                                     </div>
                                                     <div class="col-sm-7">
-                                                        <strong>{{ Auth::user()->estudiante->pasantia->departamento }}</strong>
+                                                        <strong>{{ $pasantia->departamento }}</strong>
                                                     </div>
                                                 </div>                                                                                                                                   
                                             </form>
@@ -202,28 +202,28 @@
                                                 <div class="form-group">
                                                     <div class="col-sm-5">Empresa:</div>
                                                     <div class="col-sm-7">
-                                                        <strong>{{ Auth::user()->estudiante->pasantia->empresa->empresa }}</strong>
+                                                        <strong>{{ $pasantia->empresa->empresa }}</strong>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="col-sm-5">Dirección:
                                                     </div>
                                                     <div class="col-sm-7">
-                                                        <strong>{{ Auth::user()->estudiante->pasantia->empresa->direccion }}</strong>
+                                                        <strong>{{ $pasantia->empresa->direccion }}</strong>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="col-sm-5">Teléfono:
                                                     </div>
                                                     <div class="col-sm-7">
-                                                        <strong>{{ Auth::user()->estudiante->pasantia->empresa->telefono }}</strong>
+                                                        <strong>{{ $pasantia->empresa->telefono }}</strong>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="col-sm-5">Correo electronico:
                                                     </div>
                                                     <div class="col-sm-7">
-                                                        <strong>{{ Auth::user()->estudiante->pasantia->empresa->correo }}</strong>
+                                                        <strong>{{ $pasantia->empresa->correo }}</strong>
                                                     </div>
                                                 </div>                                                                                       
                                             </form>
@@ -232,7 +232,7 @@
                                     
                                 </div>
                                 
-                                @if(isset(Auth::user()->estudiante->pasantia->proceso->id))
+                                @if(isset($pasantia->proceso->id))
                                 <div class="tab-pane fade" id="procesos">
                                     <div class="row p-20">
                                         <div class="col-md-12">
@@ -249,38 +249,38 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @if(Auth::user()->estudiante->pasantia->proceso->getStep() >= 1)
+                                                    @if($pasantia->proceso->getStep() >= 1)
                                                     <tr>
                                                         <td>Aprobación</td>
-                                                        <td>{{ Auth::user()->estudiante->pasantia->proceso->aprobacion }}</td>                                                    
+                                                        <td>{{ $pasantia->proceso->aprobacion }}</td>                                                    
                                                     </tr>
                                                     @endif
                                                     
-                                                    @if(Auth::user()->estudiante->pasantia->proceso->getStep() >= 2)
+                                                    @if($pasantia->proceso->getStep() >= 2)
                                                     <tr>
                                                         <td>Entrega de carta</td>
-                                                        <td>{{ Auth::user()->estudiante->pasantia->proceso->entrega_carta }}</td>                                                    
+                                                        <td>{{ $pasantia->proceso->entrega_carta }}</td>                                                    
                                                     </tr>
                                                     @endif
 
-                                                    @if(Auth::user()->estudiante->pasantia->proceso->getStep() >= 3)
+                                                    @if($pasantia->proceso->getStep() >= 3)
                                                     <tr>
                                                         <td>Entrega borrador</td>
-                                                        <td>{{ Auth::user()->estudiante->pasantia->proceso->entrega_borrador }}</td>                                                    
+                                                        <td>{{ $pasantia->proceso->entrega_borrador }}</td>                                                    
                                                     </tr>
                                                     @endif
 
-                                                    @if(Auth::user()->estudiante->pasantia->proceso->getStep() >= 4)
+                                                    @if($pasantia->proceso->getStep() >= 4)
                                                     <tr>
                                                         <td>Retiro borrador</td>
-                                                        <td>{{ Auth::user()->estudiante->pasantia->proceso->retiro_borrador }}</td>                                                    
+                                                        <td>{{ $pasantia->proceso->retiro_borrador }}</td>                                                    
                                                     </tr>
                                                     @endif
 
-                                                    @if(Auth::user()->estudiante->pasantia->proceso->getStep() >= 5)
+                                                    @if($pasantia->proceso->getStep() >= 5)
                                                     <tr>
                                                         <td>Entrega Final</td>
-                                                        <td>{{ Auth::user()->estudiante->pasantia->proceso->entrega_final }}</td>                                                    
+                                                        <td>{{ $pasantia->proceso->entrega_final }}</td>                                                    
                                                     </tr>
                                                     @endif
 

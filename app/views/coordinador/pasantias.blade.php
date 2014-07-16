@@ -32,7 +32,7 @@
                                     @foreach ($pasantias as $key => $pasantia)
                                     <tr>
                                         <td>{{ $pasantia->estudiante->nombre }} {{ $pasantia->estudiante->apellido }}</td>
-                                        <td>{{ $pasantia->empresa->empresa }}</td>
+                                        <td>{{ $pasantia->empresa->empresa or '' }}</td>
                                         <td>{{ $pasantia->actividad }}</td>
                                         <td>{{ $pasantia->getEstadoBadge() }}</td>
 

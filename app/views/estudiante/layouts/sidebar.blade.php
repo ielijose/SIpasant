@@ -4,12 +4,8 @@
             <li>
                 <a href="/"><i class="fa fa-dashboard"></i><span class="sidebar-text">Escritorio</span></a>
             </li>
-
-            <li>
-                <a href="/pasantias"><i class="glyph-icon flaticon-pages"></i><span class="sidebar-text">Pasantias</span></a>
-            </li>
     
-            @if(Auth::user()->estudiante->pasantia->estado == 'aceptado')
+            @if(isset(Auth::user()->estudiante->pasantia[0]->estado) && Auth::user()->estudiante->pasantia[0]->estado == 'aceptado')
             <li>
                 <a href="/generar-carta"><i class="fa fa-file-text-o"></i><span class="sidebar-text">Generar Carta</span></a>
             </li>

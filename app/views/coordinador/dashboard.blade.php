@@ -231,7 +231,12 @@ $(document).on("ready", function(){
     Morris.Bar({
         element: 'chart',
         data: [
-        { y: 'Pasantias', pe: 6, ac: 14, re:12, ap:3, rp: 2 },
+        { y: 'Pasantias', 
+            pe: {{ $data['pendientes'] }}, 
+            ac: {{ $data['aceptados'] }}, 
+            re: {{ $data['rechazados'] }}, 
+            ap: {{ $data['aprobados'] }}, 
+            rp: {{ $data['reprobados'] }} },
         ],
         xkey: 'y',
         ykeys: ['pe', 'ac', 're', 'ap', 'rp'],

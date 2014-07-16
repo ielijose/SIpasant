@@ -10,3 +10,10 @@ Route::get('pasantia/action/{action}/{id}', ['uses' => 'CoordinadorController@ac
 
 Route::post('chart/stats', ['uses' => 'CoordinadorController@charts']);
 
+Route::get('semestres', ['uses' => 'CoordinadorController@semestres']);
+
+Route::get('semestre/action/{id}/activar', ['uses' => 'CoordinadorController@activar_semestre']);
+
+Route::post('/semestre', ['uses' => 'CoordinadorController@add_semestre']);
+
+Route::get('calendario/semestre/{id}', ['uses' => 'CoordinadorController@calendario_semestre']);
