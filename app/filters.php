@@ -90,8 +90,14 @@ Route::filter('csrf', function()
 });
 
 Route::filter('canRegister', function()
-{
+{	if(isset(Auth::user()->estudiante->pasantia->semestre))
 	if(Auth::user()->getSemestreId() == Auth::user()->estudiante->pasantia->semestre){
 		return Redirect::to('/')->with('alert', ['type' => 'danger', 'message' => 'Ya registraste una pasantia este semestre.']);	
+	}
+});
+
+Route::filter('canGenerate', function()
+{	if(!isset(Auth::user()->estudiante->pasantia->id) || (Auth::user()->estudiante->pasantia->estado != 'aceptado')){
+		return Redirect::to('/')->with('alert', ['type' => 'danger', 'message' => 'No puedes generar la carta.']);	
 	}
 });

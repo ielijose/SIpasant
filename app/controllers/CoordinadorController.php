@@ -7,6 +7,8 @@ class CoordinadorController extends BaseController {
 		$data['pendientes'] = count(Pasantia::where('estado', '=', 'pendiente')->get());
 		$data['aceptados'] = count(Pasantia::where('estado', '=', 'aceptado')->get());
 		$data['rechazados'] = count(Pasantia::where('estado', '=', 'rechazado')->get());
+		$data['aprobados'] = count(Pasantia::where('estado', '=', 'aprobado')->get());
+		$data['reprobados'] = count(Pasantia::where('estado', '=', 'reprobado')->get());
 		$data['total'] = count(Pasantia::all());
 		return View::make('coordinador.dashboard', ['data' => $data]);
 	}
@@ -36,6 +38,10 @@ class CoordinadorController extends BaseController {
 		switch ($action) {
 			case 'aceptar':
 			$pasantia->estado = 'aceptado';
+			$proceso = new Proceso;
+			$proceso->aprobacion = date("Y-m-d H:i:s");
+			$proceso->pasantia_id = $pasantia->id;
+			$proceso->save();
 			break;
 			
 			case 'rechazar':
@@ -47,6 +53,20 @@ class CoordinadorController extends BaseController {
 		return Redirect::to('/pasantia/' . $id);
 	}
 
+	public function charts(){
+		$a = [];
+		$data['pendientes'] = count(Pasantia::where('estado', '=', 'pendiente')->get());
+		$data['aceptados'] = count(Pasantia::where('estado', '=', 'aceptado')->get());
+		$data['rechazados'] = count(Pasantia::where('estado', '=', 'rechazado')->get());
+		$data['aprobados'] = count(Pasantia::where('estado', '=', 'aprobado')->get());
+		$data['reprobados'] = count(Pasantia::where('estado', '=', 'reprobado')->get());
+
+		foreach ($data as $key => $value) {
+			array_push($a, ['label' => $key, 'value' => $value]);
+		}
+
+		echo json_encode($a);
+	}
 	
 
 

@@ -8,6 +8,12 @@
             <li>
                 <a href="/pasantias"><i class="glyph-icon flaticon-pages"></i><span class="sidebar-text">Pasantias</span></a>
             </li>
+    
+            @if(Auth::user()->estudiante->pasantia->estado == 'aceptado')
+            <li>
+                <a href="/generar-carta"><i class="fa fa-file-text-o"></i><span class="sidebar-text">Generar Carta</span></a>
+            </li>
+            @endif
 
 
             {{--<li>

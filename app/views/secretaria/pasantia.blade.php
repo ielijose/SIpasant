@@ -1,4 +1,4 @@
-@extends('coordinador.layouts.master')
+@extends('secretaria.layouts.master')
 
 @section('content')
 
@@ -160,11 +160,7 @@
                                                 </div>
                                                 <div class="col-sm-7">
                                                     <strong>{{ $pasantia->getEstadoBadge() }}</strong>
-                                                    @if($pasantia->getEstado() == 'pendiente')
-                                                    <hr>
-                                                    <a href="/pasantia/action/aceptar/{{ $pasantia->id}}" type="button" class="btn btn-success">Aceptar</a>
-                                                    <a href="/pasantia/action/rechazar/{{ $pasantia->id}}" type="button" class="btn btn-danger">Rechazar</a>
-                                                    @endif
+                                                    
                                                 </div>
                                             </div>
 
@@ -231,7 +227,6 @@
                                 </div>
                                
                             </div>
-                            
                             @if(isset($pasantia->proceso->id))
                             <div class="tab-pane fade" id="procesos">
                                 <div class="row p-20">
@@ -287,6 +282,7 @@
 
                                             </tbody>
                                         </table>
+                                        {{ $pasantia->proceso->getNextStep() }}
                                     </div>
                                 </div>
                                 

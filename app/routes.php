@@ -17,3 +17,8 @@ if(!Auth::user())
 Route::get('/', function(){
 	return Redirect::to('login');
 });
+
+App::missing(function($exception)
+{
+    return Redirect::to('login');
+});

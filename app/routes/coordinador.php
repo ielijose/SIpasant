@@ -8,3 +8,5 @@ Route::get('pasantia/{id}', ['uses' => 'CoordinadorController@pasantia']);
 
 Route::get('pasantia/action/{action}/{id}', ['uses' => 'CoordinadorController@action_pasantia']);
 
+Route::post('chart/stats', ['uses' => 'CoordinadorController@charts']);
+

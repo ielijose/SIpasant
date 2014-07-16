@@ -1,4 +1,4 @@
-@extends('coordinador.layouts.master')
+@extends('secretaria.layouts.master')
 
 @section('css')
 <link rel="stylesheet" href="assets/plugins/datatables/dataTables.css">

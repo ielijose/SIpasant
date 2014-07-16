@@ -41,4 +41,10 @@ class EstudianteController extends BaseController {
 		
 		return Redirect::to('/')->with('alert', ['type' => 'success', 'message' => 'Pasantia registrada con exito.']);
 	}
+
+	public function generarCarta()
+	{
+		$html = utf8_decode(View::make('estudiante.carta'));
+		return PDF::load($html, 'A4', 'portrait')->show();
+	}
 }
