@@ -24,7 +24,12 @@ class EstudianteController extends BaseController {
 		$inputs['usuario_id'] = Auth::user()->id;
 		$inputs['semestre'] = Auth::user()->getSemestreId();
 		/* ESTUDIANTE */
-		$estudiante = new Estudiante($inputs);
+		if(isset(Auth::user()->estudiante->id)){
+			$estudiante = Estudiante::find(Auth::user()->estudiante->id);
+		}else{
+			$estudiante = new Estudiante($inputs);
+		}
+		
 		$estudiante->save();
 		/* PASANTIA */
 		$pasantia = new Pasantia($inputs);

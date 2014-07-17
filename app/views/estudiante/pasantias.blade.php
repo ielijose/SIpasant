@@ -14,9 +14,7 @@
                         <div class="col-md-4">
                             <input type="text" id="member-finder" class="form-control" placeholder="Filtrar...">
                         </div>
-                        <div class="col-md-8 align-right m-t-10">
-                            <span class="c-gray m-r-20">Filter by</a> <a href="#" class="m-l-10 m-r-5">Date</a> <span class="c-gray-light">/</span> <a href="#" class="m-l-5 m-r-5">Name</a> <span class="c-gray-light">/</span> <a href="#" class="c-blue m-l-5">City</a>
-                        </div>
+                        
                     </div>
                 </div>
                 <div class="panel-body">
