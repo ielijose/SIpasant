@@ -10,4 +10,8 @@ class Semestre extends Eloquent {
         return $query->where('activo', '=', '1');
     }
 
+   public function eventos()
+   {
+   		return $this->hasMany('Evento');
+   }
 }

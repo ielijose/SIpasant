@@ -7,7 +7,7 @@
 <head>
 	<!-- BEGIN META SECTION -->
 	<meta charset="utf-8">
-	<title>Login | SIpasant</title>
+	<title>Acceder | SIpasant</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta content="" name="description" />
 	<meta content="themes-lab" name="author" />
@@ -51,7 +51,7 @@
 
 
 
-			<div class="col-sm-6 col-md-4 col-sm-offset-1 col-md-offset-1">
+			<div class="col-sm-6 col-md-4 col-sm-offset-1 col-md-offset-1" id="access-box">
 				<div class="login-box clearfix animated flipInY">
 					
 					<div class="login-logo">
@@ -60,7 +60,7 @@
 					<hr>
 					<div class="login-form">
 						@if(Session::has('message'))
-                          
+
 						<!-- BEGIN ERROR BOX -->
 						<div class="alert alert-danger">
 							<button type="button" class="close" data-dismiss="alert">×</button>
@@ -76,22 +76,51 @@
 							{{ $errors->first('contrasena_login', '<div class="alert alert-danger">  :message</div>') }}
 							{{ Form::password('contrasena_login',  array('placeholder'=>'Contraseña', 'class' => 'input-field form-control password')) }}
 
-							<button id="submit-form" class="btn btn-login ladda-button" data-style="expand-left"><span class="ladda-label">login</span></button>
+							<button id="submit-form" class="btn btn-login ladda-button" data-style="expand-left"><span class="ladda-label">Acceder</span></button>
 						</form>
 						<div class="login-links">
-							<a href="/password-recovery">Recuperar contraseña</a>
+							<a href="#" id="forgot">Recuperar contraseña</a>
 							<br>
 						</div>
 					</div>
 				</div>
-				<div class="social-login row">
-					<div class="fb-login col-lg-6 col-md-12 animated flipInX">
-						<a href="#" class="btn btn-facebook btn-block">Entrar con <strong>Facebook</strong></a>
+				
+			</div>
+
+
+			<div class="col-sm-6 col-md-4 col-sm-offset-1 col-md-offset-1 hide" id="forgot-box">
+				<div class="login-box clearfix animated flipInY">
+					
+					<div class="login-logo">
+						<h2>Recuperar Contraseña</h2>
 					</div>
-					<div class="twit-login col-lg-6 col-md-12 animated flipInX">
-						<a href="#" class="btn btn-twitter btn-block">Entrar con <strong>Twitter</strong></a>
+					<hr>
+					<div class="login-form">
+						@if(Session::has('message'))
+
+						<!-- BEGIN ERROR BOX -->
+						<div class="alert alert-danger">
+							<button type="button" class="close" data-dismiss="alert">×</button>
+							<h4>Error!</h4>
+							{{ Session::get('message') }}
+						</div>
+						<!-- END ERROR BOX --> 
+						@endif
+						<form action="/forgot" method="post">
+							{{ $errors->first('correo', '<div class="alert alert-danger">  :message</div>') }}
+							{{ Form::text('correo', Input::old('usuario_login'), array('placeholder'=>'ielijose@gmail.com', 'class' => 'input-field form-control user')) }}
+
+
+
+							<button id="submit-form" class="btn btn-login ladda-button" data-style="expand-left"><span class="ladda-label">Recuperar</span></button>
+						</form>
+						<div class="login-links">
+							<a href="#" id="access">Acceder</a>
+							<br>
+						</div>
 					</div>
 				</div>
+				
 			</div>
 
 
@@ -131,7 +160,7 @@
 
 							{{ $errors->first('password', '<div class="alert alert-danger">  :message</div>') }}
 							{{ Form::password('password',  array('placeholder'=>'Contraseña', 'class' => 'input-field')) }}
-						
+
 							<button id="submit-form" class="btn btn-login ladda-button" data-style="expand-left"><span class="ladda-label">Registrarse</span></button>
 						</form>
 					</div>
@@ -152,6 +181,26 @@
 	<script src="assets/plugins/backstretch/backstretch.min.js"></script>
 	<script src="assets/plugins/bootstrap-loading/lada.min.js"></script>
 	<script src="assets/js/account.js"></script>
+
+	<script>
+	$(document).on("ready", function(event){
+		event.preventDefault();
+
+		$("a#forgot").on("click", function(){
+			$("#access-box").slideUp("slow", function(){
+				$("#forgot-box").removeClass('hide').slideDown('slow');;
+			})
+		})
+
+		$("a#access").on("click", function(){
+			$("#forgot-box").slideUp("slow", function(){
+				$("#access-box").slideDown('slow');
+			})
+		})
+		
+	});
+
+	</script>
 	<!-- END PAGE LEVEL SCRIPTS -->
 </body>
 

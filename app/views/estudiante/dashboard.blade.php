@@ -193,6 +193,14 @@
                                                     <div class="col-sm-7">
                                                         <strong>{{ $pasantia->departamento }}</strong>
                                                     </div>
+                                                </div>  
+
+                                                <div class="form-group">
+                                                    <div class="col-sm-5">Director del departamento:
+                                                    </div>
+                                                    <div class="col-sm-7">
+                                                        <strong>{{ $pasantia->director_departamento }}</strong>
+                                                    </div>
                                                 </div>                                                                                                                                   
                                             </form>
 

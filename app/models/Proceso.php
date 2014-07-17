@@ -29,54 +29,74 @@ class Proceso extends Eloquent {
     	return $step;
     	
     }
+    public function getProcesoBadge()
+    {
+        switch ($this->getStep()) {
+            case 1:
+            return '<button class="btn btn-default m-b-10">Aprobación</button>';
+            case 2:
+            return '<button class="btn btn-warning m-b-10">Entrega de carta</button>';
+            break;
+            case 3:
+            return '<button class="btn btn-info m-b-10">Entrega de borrador</button>';
+            break;
+            case 4:
+            return '<button class="btn btn-primary m-b-10">Retiro de borrador</button>';
+            break;
+            case 5:
+            return '<button class="btn btn-success m-b-10">Entrega final</button>';
+            break;
+            
+        }  
+    }
 
     public function getNextStep(){
     	switch ($this->getStep()) {
     		case 1:
-    			return '<a href="/pasantia/step/entrega_carta/' . $this->id . '" class="btn btn-warning m-b-10">Entrega de carta <i class="fa fa-arrow-right"></i></a>';
-    			break;
-    		case 2:
-    			return '<a href="/pasantia/step/entrega_borrador/' . $this->id . '" class="btn btn-warning m-b-10">Entrega de borrador <i class="fa fa-arrow-right"></i></a>';
-    			break;
-    		case 3:
-    			return '<a href="/pasantia/step/retiro_borrador/' . $this->id . '" class="btn btn-warning m-b-10">Retiro de borrador <i class="fa fa-arrow-right"></i></a>';
-    			break;
-    		case 4:
-    			return '<a href="/pasantia/step/entrega_final/' . $this->id . '" class="btn btn-success m-b-10">Entrega final <i class="fa fa-arrow-right"></i></a>';
-    			break;
-    		case 5:
-    			return '<h3>Ya se han completado todos los pasos</h3>';
-    			break;
+         return '<a href="/pasantia/step/entrega_carta/' . $this->id . '" class="btn btn-warning m-b-10">Entrega de carta <i class="fa fa-arrow-right"></i></a>';
+         break;
+         case 2:
+         return '<a href="/pasantia/step/entrega_borrador/' . $this->id . '" class="btn btn-warning m-b-10">Entrega de borrador <i class="fa fa-arrow-right"></i></a>';
+         break;
+         case 3:
+         return '<a href="/pasantia/step/retiro_borrador/' . $this->id . '" class="btn btn-warning m-b-10">Retiro de borrador <i class="fa fa-arrow-right"></i></a>';
+         break;
+         case 4:
+         return '<a href="/pasantia/step/entrega_final/' . $this->id . '" class="btn btn-success m-b-10">Entrega final <i class="fa fa-arrow-right"></i></a>';
+         break;
+         case 5:
+         return '<h3>Ya se han completado todos los pasos</h3>';
+         break;
 
-    		
-    		default:
+
+         default:
     			# code...
-    			break;
-    	}    	
-    }
+         break;
+     }    	
+ }
 
-    public function getAprobacionAttribute($value){
-    	return $this->datear($value);
-    }
-    public function getEntregaCartaAttribute($value){
-    	return $this->datear($value);
-    }
-    public function getEntregaBorradorAttribute($value){
-    	return $this->datear($value);
-    }
-    public function getRetiroBorradorAttribute($value){
-    	return $this->datear($value);
-    }
-    public function getEntregaFinalAttribute($value){
-    	return $this->datear($value);
-    }
+ public function getAprobacionAttribute($value){
+   return $this->datear($value);
+}
+public function getEntregaCartaAttribute($value){
+   return $this->datear($value);
+}
+public function getEntregaBorradorAttribute($value){
+   return $this->datear($value);
+}
+public function getRetiroBorradorAttribute($value){
+   return $this->datear($value);
+}
+public function getEntregaFinalAttribute($value){
+   return $this->datear($value);
+}
 
-    public function datear($value){
-    	if($value == '0000-00-00 00:00:00')
-    		return '0000-00-00 00:00:00';
+public function datear($value){
+   if($value == '0000-00-00 00:00:00')
+      return '0000-00-00 00:00:00';
 
-    	return date("d M Y  H:i:s",strtotime($value));
-    }
+  return date("d M Y  H:i:s",strtotime($value));
+}
 
 
 }

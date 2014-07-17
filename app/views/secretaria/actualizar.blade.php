@@ -34,7 +34,7 @@
                                         <td>{{ $pasantia->estudiante->nombre }} {{ $pasantia->estudiante->apellido }}</td>
                                         <td>{{ $pasantia->empresa->empresa }}</td>
                                         <td>{{ $pasantia->actividad }}</td>
-                                        <td>{{ $pasantia->getEstadoBadge() }}</td>
+                                        <td>{{ $pasantia->proceso->getProcesoBadge() }}</td>
 
                                         <td> <a href="/pasantia/{{ $pasantia->id }}" class="btn btn-primary"> Ver <i class="fa fa-plus"></i></a> </td>
                                     </tr>

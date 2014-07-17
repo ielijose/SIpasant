@@ -10,9 +10,9 @@
             <a id="menu-medium" class="sidebar-toggle tooltips">
                 <i class="fa fa-outdent"></i>
             </a>
-            <a class="navbar-brand" href="index.html"></a>
+            <a class="navbar-brand" href="#"></a>
         </div>
-        <div class="navbar-center">Secretaria - Pasantias LICOM</div>
+        <div class="navbar-center">Secretaria - Pasantias LICOM <strong>({{ Auth::user()->getSemestre() }})</strong></div>
         <div class="navbar-collapse collapse">
             <!-- BEGIN TOP NAVIGATION MENU -->
             <ul class="nav navbar-nav pull-right header-menu">

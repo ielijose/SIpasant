@@ -2,6 +2,7 @@ $(function () {
     
     function runCalendar() {
         var $modal = $('#event-modal');
+        var $id = $("#id").val();
         $('#external-events div.external-event').each(function () {
             // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
             // it doesn't need to have a start or end
@@ -32,16 +33,7 @@ $(function () {
                 center: 'title',
                 right: 'month,agendaWeek,agendaDay'
             },
-            events: [{
-                title: 'Bring Files!',
-                start: new Date(y, m, 2),
-                className: 'bg-purple'
-            }, {
-                title: 'See John',
-                start: '2014-05-05 10:00:00',
-                start: '2014-05-05 11:00:00',
-                className: 'bg-red'
-            }],
+            events: '/eventos/semestre/' + $id,
             editable: true,
             droppable: true, // this allows things to be dropped onto the calendar !!!
             drop: function (date, allDay) { // this function is called when something is dropped
@@ -68,8 +60,8 @@ $(function () {
             selectable: true,
             eventClick: function (calEvent, jsEvent, view) {
                 var form = $("<form></form>");
-                form.append("<label>Change event name</label>");
-                form.append("<div class='input-group'><input class='form-control' type=text value='" + calEvent.title + "' /><span class='input-group-btn'><button type='submit' class='btn btn-success'><i class='fa fa-check'></i> Save</button></span></div>");
+                form.append("<label>Editar evento</label>");
+                form.append("<div class='input-group'><input class='form-control' type=text value='" + calEvent.title + "' /><span class='input-group-btn'><button type='submit' class='btn btn-success'><i class='fa fa-check'></i> Guardar</button></span></div>");
                 $modal.modal({
                     backdrop: 'static'
                 });
@@ -101,6 +93,9 @@ $(function () {
                     title = form.find("input[name='title']").val();
                     $categoryClass = form.find("select[name='category'] option:checked").val();
                     if (title !== null && title.length != 0) {
+
+                        
+                        
                         calendar.fullCalendar('renderEvent', {
                             title: title,
                             start: start,

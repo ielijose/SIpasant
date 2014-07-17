@@ -21,14 +21,14 @@ class CreatePasantiasTable extends Migration {
             $table->string('supervisor_cargo');
 
             $table->string('departamento');
+            $table->string('director_departamento');
             $table->string('fecha_inicio');
             $table->string('fecha_fin');
             $table->enum('tipo', ['medio_tiempo', 'tiempo_completo']);
             $table->string('horario');
             $table->string('descripcion');
-            $table->integer('nota');            
 
-            $table->string('semestre');
+            $table->integer('semestre');
             $table->enum('estado', ['pendiente', 'aceptado', 'rechazado', 'aprobado', 'reprobado']);
 
             $table->integer('estudiante_id')->unsigned();

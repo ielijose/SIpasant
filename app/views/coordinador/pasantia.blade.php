@@ -287,6 +287,11 @@
 
                                             </tbody>
                                         </table>
+
+                                        @if($pasantia->proceso->getStep() >= 5 && $pasantia->estado == 'aceptado')
+                                            <a href="/pasantia/{{$pasantia->id}}/aprobado" class="btn btn-success">Aprobar <i class="fa fa-check"></i></a>
+                                            <a href="/pasantia/{{$pasantia->id}}/reprobado" class="btn btn-danger">Reprobar <i class="fa fa-times"></i></a>
+                                        @endif
                                     </div>
                                 </div>
                                 

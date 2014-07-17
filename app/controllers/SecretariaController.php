@@ -4,24 +4,26 @@ class SecretariaController extends BaseController {
 
 	public function dashboard()
 	{
-		$data['pendientes'] = count(Pasantia::where('estado', '=', 'pendiente')->get());
-		$data['aceptados'] = count(Pasantia::where('estado', '=', 'aceptado')->get());
-		$data['rechazados'] = count(Pasantia::where('estado', '=', 'rechazado')->get());
-		$data['aprobados'] = count(Pasantia::where('estado', '=', 'aprobado')->get());
-		$data['reprobados'] = count(Pasantia::where('estado', '=', 'reprobado')->get());
-		$data['total'] = count(Pasantia::all());
-		return View::make('secretaria.dashboard', ['data' => $data]);
+		$step = [];
+		$step['total'] = 0;
+		$aceptados = Pasantia::current()->aceptados()->get();
+
+		foreach ($aceptados as $key => $a) {
+			if(isset($step[$a->proceso->getStep()])){
+				$step[$a->proceso->getStep()]++;
+			}else{
+				$step[$a->proceso->getStep()] = 1;
+			}
+			$step['total']++;
+		}
+		return View::make('secretaria.dashboard', ['step' => $step]);
 	}
 
-	public function pasantias($status = 'total')
-	{	
-		if($status == 'total'){
-			$pasantias = Pasantia::all();
-		}else{
-			$pasantias = Pasantia::where('estado', '=', $status)->get();
-		}
+	public function actualizar()
+	{			
+		$pasantias = Pasantia::current()->aceptados()->get();		
 		
-		return View::make('secretaria.pasantias', ['pasantias' => $pasantias, 'status' => $status]);
+		return View::make('secretaria.actualizar', ['pasantias' => $pasantias, 'status' => 'aceptada']);
 	}
 
 	public function pasantia($id)

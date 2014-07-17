@@ -20,8 +20,8 @@ class Estudiante extends Eloquent {
     public function getCurrentPasantia()
     {
         
-        $p = Pasantia::self()->current()->get();
-        return $p[0];
+        $p = Pasantia::self()->current()->first();
+        return $p;
     }
 
 }

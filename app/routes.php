@@ -5,6 +5,9 @@ Route::post('login', ['uses' => 'AuthController@login']);
 Route::post('register', ['uses' => 'UserController@register']);
 Route::get('logout', ['uses' => 'AuthController@logout']);
 
+Route::post('forgot', ['uses' => 'AuthController@forgot']);
+
+
 // Paneles
 Route::group(['before' => 'auth'], function () {
 
@@ -20,5 +23,5 @@ Route::get('/', function(){
 
 App::missing(function($exception)
 {
-    return Redirect::to('login');
+    //return Redirect::to('login');
 });

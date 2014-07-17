@@ -2,8 +2,8 @@
 
 @section('css')
 
-<link href="assets/plugins/fullcalendar/fullcalendar.css" rel="stylesheet">
-<link href="assets/plugins/metrojs/metrojs.css" rel="stylesheet">
+<link href="/assets/plugins/fullcalendar/fullcalendar.css" rel="stylesheet">
+<link href="/assets/plugins/metrojs/metrojs.css" rel="stylesheet">
 
 @stop
 
@@ -19,15 +19,15 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <h4 class="modal-title"><strong>Manage</strong> my events</h4>
+                            <h4 class="modal-title"><strong>Añadir</strong> evento</h4>
                         </div>
                         <div class="modal-body">
                             <p></p>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-success save-event">Create event</button>
-                            <button type="button" class="btn btn-danger delete-event" data-dismiss="modal">Delete</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn btn-success save-event">Guardar</button>
+                            <button type="button" class="btn btn-danger delete-event" data-dismiss="modal">Borrar</button>
                         </div>
                     </div>
                     <!-- /.modal-content -->
@@ -41,7 +41,7 @@
                         <div class="widget-body p-b-0">
                             <div class="row">
                                 <div class="col-md-12 col-sm-12 col-xs-12">
-                                    <h2 class="panel-title width-100p c-blue w-500 f-20 carrois" id="calender-current-day">Events Manager</h2>
+                                    <h2 class="panel-title width-100p c-blue w-500 f-20 carrois" id="calender-current-day">Fechas importantes</h2>
                                     <div id='external-events'>
                                         <br>
                                         <br>
@@ -80,6 +80,8 @@
     </div>
 </div>
 
+<input type="hidden" id="id" value="{{$id}}">
+
 @stop
 
 
@@ -88,6 +90,8 @@
 <script src="/assets/plugins/metrojs/metrojs.min.js"></script>
 <script src='/assets/plugins/fullcalendar/moment.min.js'></script>
 <script src='/assets/plugins/fullcalendar/fullcalendar.min.js'></script>
+<script src='/assets/plugins/fullcalendar/lang-all.js'></script>
+
 <script src="/assets/plugins/charts-morris/raphael.min.js"></script>
 <script src="/assets/plugins/charts-morris/morris.min.js"></script>
 <script src="/assets/plugins/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>

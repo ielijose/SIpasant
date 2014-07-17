@@ -62,7 +62,7 @@ Maracaibo, {{ date('d/m/Y') }}
 	</strong>	
 </div>
 
-<p style="text-align:justify">Ciudadano(a)<br> {{ $p->supervisor_nombre }} <br><br>
+<p style="text-align:justify">Ciudadano(a)<br> {{ $p->director_departamento }} <br><br>
 	Su Despacho.- <br><br>
 	Sirva la presente para postular al Br. {{ Auth::user()->nombre .' '. Auth::user()->apellido }}, titular de la Cédula de Identidad No.: {{ Auth::user()->estudiante->ci }}, estudiante regular de la Licenciatura en Computación de la Facultad Experimental de Ciencias de la Universidad del Zulia para desempeñarse como pasante de su organización.
 

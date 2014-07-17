@@ -5,7 +5,7 @@ class Pasantia extends Eloquent {
 	protected $table = 'pasantias';
 	public $timestamp = true;
 
-    protected $fillable = ['actividad', 'supervisor_nombre', 'supervisor_cargo', 'departamento', 'fecha_inicio', 'fecha_fin', 'tipo', 'horario', 'descripcion', 'nota', 'semestre', 'estudiante_id'];
+    protected $fillable = ['actividad', 'supervisor_nombre', 'supervisor_cargo', 'departamento', 'fecha_inicio', 'fecha_fin', 'tipo', 'horario', 'descripcion', 'director_departamento', 'semestre', 'estudiante_id'];
 
     public function estudiante()
     {
@@ -20,6 +20,12 @@ class Pasantia extends Eloquent {
     public function proceso()
     {
         return $this->hasOne('Proceso');
+    }
+
+    public function getsemestre()
+    {
+        $s = Semestre::where('id', '=', $this->semestre)->first();
+        return $s->semestre;
     }
 
     public function getEstadoBadge()
@@ -75,8 +81,13 @@ class Pasantia extends Eloquent {
     }
 
     public function scopeSelf($query)
-    {
-        return $query->where('estudiante_id', '=', Auth::user()->estudiante->id);
+    {   
+        try {
+            return $query->where('estudiante_id', '=', Auth::user()->estudiante->id);
+        } catch (Exception $e) {
+            return $query->where('estudiante_id', '=', null);
+        }
+        
     }
     public function scopeCurrent($query)
     {
@@ -84,5 +95,14 @@ class Pasantia extends Eloquent {
         return $query->where('semestre', '=', $s->id);
     }
 
+    public function scopeAceptados($query)
+    {
+        return $query->where('estado', '=', 'aceptado');
+    }
+
+    public function scopePendientes($query)
+    {
+        return $query->where('estado', '=', 'pendiente');
+    }
 
 }

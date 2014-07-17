@@ -35,6 +35,15 @@ class CoordinadorController extends BaseController {
 		return View::make('coordinador.pasantias', ['pasantias' => $pasantias, 'status' => $status]);
 	}
 
+	public function arbitrar()
+	{	
+		$pasantias = Pasantia::current()->pendientes()->get();
+		
+		return View::make('coordinador.pasantias', ['pasantias' => $pasantias, 'status' => 'pendiente']);
+	}
+
+	
+
 	public function pasantia($id)
 	{	
 		$pasantia = Pasantia::find($id);
@@ -113,6 +122,34 @@ class CoordinadorController extends BaseController {
 	{
 		return View::make('coordinador.calendario', ['id' => $id]);
 	}
+
+	public function eventos_semestre($id)
+	{
+		$s = Semestre::find($id);
+		echo $s->eventos->toJson();
+	}
+
+	public function evento_add()
+	{
+		dd(Input::all());
+	}
+
+
+	
+	public function change_status($id, $status)
+	{	
+		
+		$pasantia = Pasantia::find($id);
+
+		if($pasantia->proceso->getStep() >= 5){
+			$pasantia->estado = $status;
+			$pasantia->save();
+		}
+
+		return Redirect::to('/pasantia/' . $id);
+	}
+
+	
 
 
 }

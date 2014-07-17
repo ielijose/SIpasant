@@ -95,6 +95,11 @@
                                         <label for="departamento">Departamento *</label>
                                         <input id="departamento" name="departamento" type="text" class="form-control required">
                                     </div>
+
+                                    <div class="form-group">
+                                        <label for="departamento">Director del departamento *</label>
+                                        <input id="departamento" name="director_departamento" type="text" class="form-control required">
+                                    </div>
                                     
                                     <p>(*) Obligatorio</p>
                                 </section>
@@ -117,7 +122,7 @@
 
                                     <div class="form-group col-md-6">
                                         <label for="fecha_inicio">Fecha de inicio *</label>
-                                        <input id="fecha_inicio" name="fecha_inicio" type="date" class="form-control required"> 
+                                        <input id="fecha_inicio" id="fecha_inicio" name="fecha_inicio" type="date" class="form-control required"> 
 
                                     </div>
 
@@ -166,7 +171,39 @@
 
 <script>
 $(document).on("ready", function(){
-    $("#radio-choice-t-6a").prop('checked', true);
+    $mt = $("#radio-choice-t-6a"); //medio tiempo radio
+    $tc = $("#radio-choice-t-6b"); //tiempo completo radio
+
+    $mt.prop('checked', true);
+
+    $("#fecha_inicio").on("change", function(){
+        setFecha();
+    });
+
+    $mt.on("change", function(){
+        setFecha();
+    });
+
+    $tc.on("change", function(){
+        setFecha();
+    });
+
+    function setFecha(){
+        var dt = new Date($("#fecha_inicio").val()); //creamos clase date
+        var tiempo = dt.getTime(); //obtenemos los milisegundos de la fecha
+        if($mt.is(':checked')){ // si medio tiempo esta checkeado son 12 semanas
+            var milisec = parseInt((12*7) *24*60*60*1000);
+        }else{// si no son 6 semanas
+            var milisec = parseInt((6*7) *24*60*60*1000);
+        }        
+
+        dt.setTime(tiempo+milisec);//sumamos la fehca actual con los milisegundos
+
+        var m = (dt.getMonth()+1 < 10) ? "0"+(dt.getMonth()+1) : dt.getMonth()+1; //formula mes con 0 inicial
+        var d = (dt.getDate() < 10) ? "0"+(dt.getDate()) : dt.getDate();  //formula dia con 0 inicial
+        var nf = dt.getFullYear()+"-"+ m +"-"+d; //formato fecha
+        $("#fecha_fin").val(nf); //seteamos
+    }
 })
 
 </script>

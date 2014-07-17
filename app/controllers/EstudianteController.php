@@ -4,8 +4,9 @@ class EstudianteController extends BaseController {
 
 	public function dashboard()
 	{
+		$p = Pasantia::current()->self()->first();
 		//echo Auth::user()->estudiante->pasantia->toJson(); exit;
-		return View::make('estudiante.dashboard', ['pasantia' => Auth::user()->estudiante->getCurrentPasantia()]);
+		return View::make('estudiante.dashboard', ['pasantia' => $p]);
 	}
 
 	public function registrarPasantia()
@@ -47,5 +48,22 @@ class EstudianteController extends BaseController {
 		$p = Pasantia::current()->self()->get()[0];
 		$html = utf8_decode(View::make('estudiante.carta', ['p' => $p]));
 		return PDF::load($html, 'A4', 'portrait')->show();
+	}
+
+	public function pasantias()
+	{
+		return View::make('estudiante.pasantias', ['pasantias' => Pasantia::self()->get()]);
+	}
+
+	public function pasantia($id)
+	{
+		$pasantia = Pasantia::self()->find($id);
+
+		return View::make('estudiante.pasantia', ['pasantia' => $pasantia]);
+	}
+
+	public function documentos()
+	{
+		return View::make('estudiante.documentos');
 	}
 }

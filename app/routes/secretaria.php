@@ -2,7 +2,7 @@
 
 Route::get('/', ['uses' => 'SecretariaController@dashboard']);
 
-Route::get('pasantias/{status?}', ['uses' => 'SecretariaController@pasantias']);
+Route::get('actualizar', ['uses' => 'SecretariaController@actualizar']);
 
 Route::get('pasantia/{id}', ['uses' => 'SecretariaController@pasantia']);
 

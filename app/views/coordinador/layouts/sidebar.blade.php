@@ -6,7 +6,7 @@
             </li>
 
             <li>
-                <a href="/pasantias"><i class="glyph-icon flaticon-pages"></i><span class="sidebar-text">Pasantias</span></a>
+                <a href="/arbitrar"><i class="glyph-icon flaticon-pages"></i><span class="sidebar-text">Arbitrar</span></a>
             </li>
 
             <li>
