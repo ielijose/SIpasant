@@ -141,10 +141,14 @@ class CoordinadorController extends BaseController {
 		
 		$pasantia = Pasantia::find($id);
 
-		if($pasantia->proceso->getStep() >= 5){
+		if($status == 'reprobado'){
 			$pasantia->estado = $status;
-			$pasantia->save();
 		}
+
+		if($pasantia->proceso->getStep() >= 5){
+			$pasantia->estado = $status;			
+		}
+		$pasantia->save();
 
 		return Redirect::to('/pasantia/' . $id);
 	}

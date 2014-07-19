@@ -12,7 +12,7 @@
             </a>
             <a class="navbar-brand" href="#"></a>
         </div>
-        <div class="navbar-center">Secretaria - Pasantias LICOM <strong>({{ Auth::user()->getSemestre() }})</strong></div>
+        <div class="navbar-center">DPE - Pasantias LICOM <strong>({{ Auth::user()->getSemestre() }})</strong></div>
         <div class="navbar-collapse collapse">
             <!-- BEGIN TOP NAVIGATION MENU -->
             <ul class="nav navbar-nav pull-right header-menu">
@@ -20,7 +20,7 @@
             <!-- BEGIN USER DROPDOWN -->
             <li class="dropdown" id="user-header">
                 <a href="#" class="dropdown-toggle c-white" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                    <img src="/assets/img/avatars/avatar2.png" alt="user avatar" width="30" class="p-r-5">
+                    <img src="/assets/img/avatars/avatar5.png" alt="user avatar" width="30" class="p-r-5">
                     <span class="username">{{ Auth::user()->nombre }}</span>
                     <i class="fa fa-angle-down p-r-10"></i>
                 </a>

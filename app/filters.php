@@ -90,8 +90,10 @@ Route::filter('csrf', function()
 });
 
 Route::filter('canRegister', function()
-{	if(isset(Auth::user()->estudiante->pasantia->semestre))
-	if(Auth::user()->getSemestreId() == Auth::user()->estudiante->pasantia->semestre){
+{	
+	$p = Pasantia::current()->self()->first();
+	if(isset($p->id))
+	if(Auth::user()->getSemestreId() == $p->semestre){
 		return Redirect::to('/')->with('alert', ['type' => 'danger', 'message' => 'Ya registraste una pasantia este semestre.']);	
 	}
 });

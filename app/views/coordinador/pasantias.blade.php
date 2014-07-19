@@ -13,7 +13,11 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading bg-blue">
-                    <h3 class="panel-title"><strong>Listado de </strong> pasantias {{ $status }}s </h3>
+                    <h3 class="panel-title"><strong>Listado de </strong> pasantias 
+                        @if($status != 'total')
+                        {{ $status }}s
+                        @endif
+                         </h3>
                 </div>
                 <div class="panel-body">
                     <div class="row">
@@ -22,8 +26,9 @@
                                 <thead>
                                     <tr>
                                         <th>Nombre y Apellido</th>
+                                        <th>CI</th>
                                         <th>Empresa</th>
-                                        <th>Actividad</th>
+                                        <th>Proceso</th>
                                         <th>Estado</th>
                                         <th>Ver mas</th>
                                     </tr>
@@ -32,8 +37,13 @@
                                     @foreach ($pasantias as $key => $pasantia)
                                     <tr>
                                         <td>{{ $pasantia->estudiante->nombre }} {{ $pasantia->estudiante->apellido }}</td>
-                                        <td>{{ $pasantia->empresa->empresa or '' }}</td>
-                                        <td>{{ $pasantia->actividad }}</td>
+                                        <td>{{ $pasantia->estudiante->ci or '' }}</td>
+                                        <td>{{ $pasantia->empresa->empresa }}</td>
+                                        @if(isset($pasantia->proceso->id))
+                                        <td>{{ $pasantia->proceso->getProcesoBadge() }}</td>
+                                        @else
+                                        <td> - </td>
+                                        @endif
                                         <td>{{ $pasantia->getEstadoBadge() }}</td>
 
                                         <td> <a href="/pasantia/{{ $pasantia->id }}" class="btn btn-primary"> Ver <i class="fa fa-plus"></i></a> </td>
@@ -54,13 +64,13 @@
 
 @section('javascript')
 
-<script src="assets/plugins/bootstrap-switch/bootstrap-switch.js"></script>
-<script src="assets/plugins/bootstrap-progressbar/bootstrap-progressbar.js"></script>
-<script src="assets/plugins/datatables/dynamic/jquery.dataTables.min.js"></script>
-<script src="assets/plugins/datatables/dataTables.bootstrap.js"></script>
-<script src="assets/plugins/datatables/dataTables.tableTools.js"></script>
-<script src="assets/plugins/datatables/table.editable.js"></script>
-<script src="assets/js/table_dynamic.js"></script>
+<script src="/assets/plugins/bootstrap-switch/bootstrap-switch.js"></script>
+<script src="/assets/plugins/bootstrap-progressbar/bootstrap-progressbar.js"></script>
+<script src="/assets/plugins/datatables/dynamic/jquery.dataTables.min.js"></script>
+<script src="/assets/plugins/datatables/dataTables.bootstrap.js"></script>
+<script src="/assets/plugins/datatables/dataTables.tableTools.js"></script>
+<script src="/assets/plugins/datatables/table.editable.js"></script>
+<script src="/assets/js/table_dynamic.js"></script>
 
 
 @stop

@@ -179,7 +179,7 @@
                 <!-- BEGIN USER DROPDOWN -->
                 <li class="dropdown" id="user-header">
                     <a href="#" class="dropdown-toggle c-white" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                        <img src="/assets/img/avatars/avatar2.png" alt="user avatar" width="30" class="p-r-5">
+                        <img src="/assets/img/avatars/avatar1.png" alt="user avatar" width="30" class="p-r-5">
                         <span class="username">{{ Auth::user()->nombre . ' ' .Auth::user()->apellido  }}</span>
                         <i class="fa fa-angle-down p-r-10"></i>
                     </a>
