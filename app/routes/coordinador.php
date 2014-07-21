@@ -22,5 +22,9 @@ Route::get('calendario/semestre/{id}', ['uses' => 'CoordinadorController@calenda
 
 Route::get('eventos/semestre/{id}', ['uses' => 'CoordinadorController@eventos_semestre']);
 Route::post('evento/add/{id}', ['uses' => 'CoordinadorController@evento_add']);
+Route::put('evento/edit/{id}', ['uses' => 'CoordinadorController@evento_edit']);
+Route::delete('evento/delete/{id}', ['uses' => 'CoordinadorController@evento_delete']);
+Route::put('evento/drop/{id}', ['uses' => 'CoordinadorController@evento_drop']);
+
 
 Route::get('pasantia/{id}/{status}', ['uses' => 'CoordinadorController@change_status']);

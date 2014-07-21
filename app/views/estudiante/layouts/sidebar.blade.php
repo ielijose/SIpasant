@@ -13,6 +13,10 @@
             <li>
                 <a href="/documentos"><i class="fa fa-folder"></i><span class="sidebar-text">Documentos</span></a>
             </li>
+
+            <li>
+                <a href="/calendario"><i class="fa fa-calendar"></i><span class="sidebar-text">Calendario</span></a>
+            </li>
             @endif
             
             <br>

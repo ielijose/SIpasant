@@ -1,5 +1,5 @@
 $(function () {
-    
+
     function runCalendar() {
         var $modal = $('#event-modal');
         var $id = $("#id").val();
@@ -33,11 +33,35 @@ $(function () {
                 center: 'title',
                 right: 'month,agendaWeek,agendaDay'
             },
+            monthNames: ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" ], 
+            monthNamesShort: ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'],
+            dayNames: [ 'Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+            dayNamesShort: ['Dom','Lun','Mar','Mie','Jue','Vie','Sab'],
+            buttonText: {
+                today: 'hoy',
+                month: 'mes',
+                week: 'semana',
+                day: 'día'
+            },
+            
             events: '/eventos/semestre/' + $id,
             editable: true,
             droppable: true, // this allows things to be dropped onto the calendar !!!
+            eventDrop: function(event, delta, revertFunc) {
+                $.ajax({
+                    type: "PUT",
+                    url: "/evento/drop/" + event.id,
+                    data: { 
+                        start: event.start.format(),
+                        end: event.end.format()
+                    }
+
+                }).done(function( msg ) {
+                });
+            },
             drop: function (date, allDay) { // this function is called when something is dropped
                 // retrieve the dropped element's stored Event Object
+                debugger;
                 var originalEventObject = $(this).data('eventObject');
                 var $categoryClass = $(this).attr('data-class');
                 // we need to copy it, so that multiple events don't have a reference to the same object
@@ -66,14 +90,41 @@ $(function () {
                     backdrop: 'static'
                 });
                 $modal.find('.delete-event').show().end().find('.save-event').hide().end().find('.modal-body').empty().prepend(form).end().find('.delete-event').unbind('click').click(function () {
-                    calendar.fullCalendar('removeEvents', function (ev) {
-                        return (ev._id == calEvent._id);
+                    
+
+                    $.ajax({
+                        type: "DELETE",
+                        url: "/evento/delete/" + calEvent.id
+                    }).done(function( msg ) {
+                        calendar.fullCalendar('removeEvents', function (ev) {
+                            return (ev._id == calEvent._id);
+                        });
                     });
+
+
+                    
                     $modal.modal('hide');
                 });
                 $modal.find('form').on('submit', function () {
                     calEvent.title = form.find("input[type=text]").val();
-                    calendar.fullCalendar('updateEvent', calEvent);
+
+
+                    $.ajax({
+                        type: "PUT",
+                        url: "/evento/edit/" + calEvent.id,
+                        data: { 
+                            title: calEvent.title,
+                        }
+
+                    }).done(function( msg ) {
+                        calendar.fullCalendar('updateEvent', calEvent);
+                    });
+
+                    
+
+                    
+
+
                     $modal.modal('hide');
                     return false;
                 });
@@ -84,8 +135,8 @@ $(function () {
                 });
                 form = $("<form></form>");
                 form.append("<div class='row'></div>");
-                form.find(".row").append("<div class='col-md-6'><div class='form-group'><label class='control-label'>Event Name</label><input class='form-control' placeholder='Insert Event Name' type='text' name='title'/></div></div>").append("<div class='col-md-6'><div class='form-group'><label class='control-label'>Category</label><select class='form-control' name='category'></select></div></div>").find("select[name='category']").append("<option value='bg-red'>Work</option>")
-                    .append("<option value='bg-green'>Sport</option>").append("<option value='bg-purple'>Meeting</option>").append("<option value='bg-blue'>Lunch</option>").append("<option value='bg-yellow'>Children</option>");
+                form.find(".row").append("<div class='col-md-6'><div class='form-group'><label class='control-label'>Evento</label><input class='form-control' placeholder='Entrega de borrador' type='text' name='title'/></div></div>").append("<div class='col-md-6'><div class='form-group'><label class='control-label'>Categoría</label><select class='form-control' name='category'></select></div></div>").find("select[name='category']").append("<option value='bg-green'>Aviso</option>")
+                .append("<option value='bg-purple'>Opcional</option>").append("<option value='bg-orange'>Importante</option>").append("<option value='bg-red'>Urgente</option>");
                 $modal.find('.delete-event').hide().end().find('.save-event').show().end().find('.modal-body').empty().prepend(form).end().find('.save-event').unbind('click').click(function () {
                     form.submit();
                 });
@@ -94,15 +145,32 @@ $(function () {
                     $categoryClass = form.find("select[name='category'] option:checked").val();
                     if (title !== null && title.length != 0) {
 
+
+
+
+                        $.ajax({
+                            type: "POST",
+                            url: "/evento/add/" + $("#id").val(),
+                            data: { 
+                                title: title,
+                                start: start.format(),
+                                end: end.format(),
+                                className: $categoryClass 
+                            }
+
+                        }).done(function( msg ) {
+                            calendar.fullCalendar('renderEvent', {
+                                title: title,
+                                start: start,
+                                end: end,
+                                allDay: false,
+                                className: $categoryClass
+                            }, true);
+                        });
+
                         
-                        
-                        calendar.fullCalendar('renderEvent', {
-                            title: title,
-                            start: start,
-                            end: end,
-                            allDay: false,
-                            className: $categoryClass
-                        }, true);  
+
+
                     }
                     else{
                         alert('You have to give a title to your event');
@@ -110,12 +178,13 @@ $(function () {
                     $modal.modal('hide');
                     return false;
                 });
-                calendar.fullCalendar('unselect');
-            }
-
-        });
-    }
-
-    runCalendar();
+calendar.fullCalendar('unselect');
+}
 
 });
+}
+
+runCalendar();
+
+});
+

@@ -24,4 +24,11 @@ class Estudiante extends Eloquent {
         return $p;
     }
 
+    public function sms($text)
+    {
+        $text = "Br. " . strtoupper($this->apellido .', '. $this->nombre.". "). $text;
+        if(isset($this->telefono_movil))
+        Heywire::text($this->telefono_movil, $text);
+    }
+
 }

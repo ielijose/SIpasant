@@ -14,6 +14,10 @@ Route::get('/pasantia/{id}', ['uses' => 'EstudianteController@pasantia']);
 
 Route::get('/documentos', ['uses' => 'EstudianteController@documentos']);
 
+Route::get('/calendario', ['uses' => 'EstudianteController@calendario']);
+
+Route::get('eventos/semestre/{id}', ['uses' => 'EstudianteController@eventos_semestre']);
+
 
 View::composer('estudiante.pasantia', function($view)
 {

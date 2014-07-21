@@ -41,7 +41,6 @@ class CoordinadorController extends BaseController {
 		
 		return View::make('coordinador.pasantias', ['pasantias' => $pasantias, 'status' => 'pendiente']);
 	}
-
 	
 
 	public function pasantia($id)
@@ -51,8 +50,7 @@ class CoordinadorController extends BaseController {
 	}
 
 	public function action_pasantia($action, $id)
-	{	
-		
+	{			
 		$pasantia = Pasantia::find($id);
 
 		switch ($action) {
@@ -69,6 +67,9 @@ class CoordinadorController extends BaseController {
 			break;
 		}
 		$pasantia->save();
+
+		$text = "El estado de su pasantia acaba de cambiar a: \"$pasantia->estado\".";
+		$pasantia->estudiante->sms($text);
 
 		return Redirect::to('/pasantia/' . $id);
 	}
@@ -129,11 +130,32 @@ class CoordinadorController extends BaseController {
 		echo $s->eventos->toJson();
 	}
 
-	public function evento_add()
+	public function evento_add($id)
 	{
-		dd(Input::all());
+		$evento = new Evento(Input::all());
+		$evento->semestre_id = $id;
+		$evento->save();
 	}
 
+	public function evento_edit($id)
+	{
+		$evento = Evento::find($id);
+		$evento->title = Input::get('title');
+		$evento->save();
+	}
+
+	public function evento_delete($id)
+	{
+		Evento::destroy($id);
+	}
+
+	public function evento_drop($id)
+	{
+		$evento = Evento::find($id);
+		$evento->start = Input::get('start');
+		$evento->end = Input::get('end');
+		$evento->save();
+	}
 
 	
 	public function change_status($id, $status)
@@ -150,10 +172,9 @@ class CoordinadorController extends BaseController {
 		}
 		$pasantia->save();
 
+		$text = "El estado de su pasantia acaba de cambiar a: \"$pasantia->estado\".";
+		$pasantia->estudiante->sms($text);
+
 		return Redirect::to('/pasantia/' . $id);
 	}
-
-	
-
-
 }

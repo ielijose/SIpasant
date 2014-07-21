@@ -1,4 +1,4 @@
-@extends('coordinador.layouts.master')
+@extends('estudiante.layouts.master')
 
 @section('css')
 
@@ -96,7 +96,7 @@
 <script src="/assets/plugins/charts-morris/raphael.min.js"></script>
 <script src="/assets/plugins/charts-morris/morris.min.js"></script>
 <script src="/assets/plugins/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
-<script src="/assets/js/calendar.js"></script>
+<script src="/assets/js/calendar-user.js"></script>
 <script src="/assets/js/dashboard.js"></script>
 
 <script type="text/javascript" src="/assets/js/stacktrace.js" />

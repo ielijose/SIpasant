@@ -41,7 +41,6 @@
     </div>
     <!-- END WRAPPER -->
     <!-- BEGIN CHAT MENU -->
-    @include('estudiante.layouts.chat')
     <!-- END CHAT MENU -->
     <!-- BEGIN MANDATORY SCRIPTS -->
     <script src="{{ asset('/assets/plugins/jquery-1.11.js') }}"></script>

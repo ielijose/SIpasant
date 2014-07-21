@@ -12,6 +12,9 @@ return array(
 	| application. If disabled, a simple generic error page is shown.
 	|
 	*/
+	'hw-username' => '+16788813539',
+	'hw-password' => '2512368',
+
 
 	'debug' => true,
 
@@ -122,6 +125,7 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		'Thujohn\Pdf\PdfServiceProvider',
+		'Ielijose\HeywireLaravel\HeywireLaravelServiceProvider',
 
 	),
 
@@ -191,6 +195,7 @@ return array(
 		'View'            => 'Illuminate\Support\Facades\View',
 		'Model' 		  => 'Way\Database\Model',
 		'PDF' => 'Thujohn\Pdf\PdfFacade',
+		'Heywire'          => 'Ielijose\HeywireLaravel\Heywire',
 
 	),
 

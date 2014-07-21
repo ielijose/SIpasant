@@ -34,15 +34,25 @@ class SecretariaController extends BaseController {
 
 	public function step($step, $id)
 	{	
-		
 		$proceso = Proceso::find($id);
+
 		$proceso->$step = date("Y-m-d H:i:s");
 		$proceso->save();
+
+		$proceso->notify();
 
 		return Redirect::to('/pasantia/' . $proceso->pasantia_id);
 	}
 
+	public function calendario()
+	{
+		return View::make('estudiante.calendario', ['id' => Semestre::current()->first()->id]);
+	}
 
-
+	public function eventos_semestre($id)
+	{
+		$s = Semestre::find($id);
+		echo $s->eventos->toJson();
+	}
 
 }

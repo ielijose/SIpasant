@@ -3,9 +3,8 @@
 class EstudianteController extends BaseController {
 
 	public function dashboard()
-	{
+	{		
 		$p = Pasantia::current()->self()->first();
-		//echo Auth::user()->estudiante->pasantia->toJson(); exit;
 		return View::make('estudiante.dashboard', ['pasantia' => $p]);
 	}
 
@@ -44,7 +43,11 @@ class EstudianteController extends BaseController {
 		$empresa->correo = $inputs['empresa_correo'];
 		$empresa->pasantia_id = $pasantia->id;
 		$empresa->save();
-		
+
+
+		$text = "Acabas de registrar una pasantia, recibirar algunas notificaciones del proceso por este medio.";
+		$estudiante->sms($text);
+
 		return Redirect::to('/')->with('alert', ['type' => 'success', 'message' => 'Pasantia registrada con exito.']);
 	}
 
@@ -70,5 +73,16 @@ class EstudianteController extends BaseController {
 	public function documentos()
 	{
 		return View::make('estudiante.documentos');
+	}
+
+	public function calendario()
+	{
+		return View::make('estudiante.calendario', ['id' => Semestre::current()->first()->id]);
+	}
+
+	public function eventos_semestre($id)
+	{
+		$s = Semestre::find($id);
+		echo $s->eventos->toJson();
 	}
 }
