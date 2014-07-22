@@ -2,15 +2,17 @@
 
 Route::get('/', ['uses' => 'CoordinadorController@dashboard']);
 
+/* WEB */
 Route::get('pasantias/{status?}', ['uses' => 'CoordinadorController@pasantias']);
-
 Route::get('arbitrar', ['uses' => 'CoordinadorController@arbitrar']);
+/* PDF */
+Route::get('pdf/pasantias/{status?}', ['uses' => 'CoordinadorController@pdf_pasantias']);
+Route::get('pdf/arbitrar', ['uses' => 'CoordinadorController@pdf_arbitrar']);
+
 
 Route::get('pasantia/{id}', ['uses' => 'CoordinadorController@pasantia']);
 
 Route::get('pasantia/action/{action}/{id}', ['uses' => 'CoordinadorController@action_pasantia']);
-
-Route::post('chart/stats', ['uses' => 'CoordinadorController@charts']);
 
 Route::get('semestres', ['uses' => 'CoordinadorController@semestres']);
 

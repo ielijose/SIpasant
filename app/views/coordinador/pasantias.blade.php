@@ -22,7 +22,10 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-12 col-sm-12 col-xs-12 table-responsive table-blue">
-                            <table class="table table-hover table-dynamic table-tools" id="pendientes">
+                            @if(count($pasantias))
+                            <a href="/pdf/{{ Request::path() }}" target="_blank" class="btn btn-info pull-right"><i class="fa fa-file-o"></i> Generar PDF</a>
+                            @endif
+                            <table class="table table-hover table-dynamic" id="pendientes">
                                 <thead>
                                     <tr>
                                         <th>Nombre y Apellido</th>

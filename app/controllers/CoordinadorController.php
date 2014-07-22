@@ -31,17 +31,33 @@ class CoordinadorController extends BaseController {
 			$pasantias = Pasantia::current()->where('estado', '=', $status)->get();
 		}
 		
-		//echo $pasantias[0]->empresa->empresa; exit;
 		return View::make('coordinador.pasantias', ['pasantias' => $pasantias, 'status' => $status]);
+	}
+
+	public function pdf_pasantias($status = 'total')
+	{	
+		if($status == 'total'){
+			$pasantias = Pasantia::current()->get();
+		}else{
+			$pasantias = Pasantia::current()->where('estado', '=', $status)->get();
+		}
+
+		$html = utf8_decode(View::make('coordinador.pdf_pasantias', ['pasantias' => $pasantias, 'status' => $status]));
+		return PDF::load($html, 'A4', 'landscape')->show();
 	}
 
 	public function arbitrar()
 	{	
-		$pasantias = Pasantia::current()->pendientes()->get();
-		
+		$pasantias = Pasantia::current()->pendientes()->get();		
 		return View::make('coordinador.pasantias', ['pasantias' => $pasantias, 'status' => 'pendiente']);
 	}
-	
+
+	public function pdf_arbitrar()
+	{	
+		$pasantias = Pasantia::current()->pendientes()->get();		
+		$html = (View::make('coordinador.pdf_pasantias', ['pasantias' => $pasantias, 'status' => 'pendiente']));
+		return PDF::load($html, 'A4', 'landscape')->show();
+	}	
 
 	public function pasantia($id)
 	{	
@@ -73,22 +89,6 @@ class CoordinadorController extends BaseController {
 
 		return Redirect::to('/pasantia/' . $id);
 	}
-
-	public function charts(){
-		$a = [];
-		$data['pendientes'] = count(Pasantia::where('estado', '=', 'pendiente')->get());
-		$data['aceptados'] = count(Pasantia::where('estado', '=', 'aceptado')->get());
-		$data['rechazados'] = count(Pasantia::where('estado', '=', 'rechazado')->get());
-		$data['aprobados'] = count(Pasantia::where('estado', '=', 'aprobado')->get());
-		$data['reprobados'] = count(Pasantia::where('estado', '=', 'reprobado')->get());
-
-		foreach ($data as $key => $value) {
-			array_push($a, ['label' => $key, 'value' => $value]);
-		}
-
-		echo json_encode($a);
-	}
-
 
 	public function semestres()
 	{	

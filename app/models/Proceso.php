@@ -100,6 +100,48 @@ class Proceso extends Eloquent {
         $this->pasantia->estudiante->sms($text);
     }
 
+    public function getStepById($id){
+      $defaultDate = '0000-00-00 00:00:00';
+      switch ($id) {
+        case 1:
+        if($this->aprobacion != $defaultDate){
+          return $this->datear($this->aprobacion);
+        }else{
+          return '-';
+        }
+        case 2:
+        if($this->entrega_carta != $defaultDate){
+          return $this->datear($this->entrega_carta);
+        }else{
+          return '-';
+        }
+        break;
+        case 3:
+        if($this->entrega_borrador != $defaultDate){
+          return $this->datear($this->entrega_borrador);
+        }else{
+          return '-';
+        }
+        break;
+        case 4:
+        if($this->retiro_borrador != $defaultDate){
+          return $this->datear($this->retiro_borrador);
+        }else{
+          return '-';
+        }
+        break;
+        case 5:
+        if($this->entrega_final != $defaultDate){
+          return $this->datear($this->entrega_final);
+        }else{
+          return '-';
+        }
+        break;
+        
+      }
+      
+    }
+
 public function getAprobacionAttribute($value)
 {
  return $this->datear($value);
@@ -125,6 +167,9 @@ public function datear($value){
 
     return date("d M Y  H:i:s",strtotime($value));
 }
+
+
+
 
 
 }
