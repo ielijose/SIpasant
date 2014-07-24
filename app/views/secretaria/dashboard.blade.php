@@ -92,7 +92,7 @@ $(document).on("ready", function(){
     Morris.Bar({
         element: 'chart',
         data: [
-        { y: 'Pasantias', 
+        { y: 'Pasantías', 
         ap: {{ $step[1] or '0' }}, 
         ec: {{ $step[2] or '0' }}, 
         eb: {{ $step[3] or '0' }}, 

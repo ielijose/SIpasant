@@ -13,7 +13,7 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading bg-blue">
-                    <h3 class="panel-title"><strong>Listado de </strong> pasantias 
+                    <h3 class="panel-title"><strong>Listado de </strong> pasantías 
                         @if($status != 'total')
                         {{ $status }}s
                         @endif

@@ -12,7 +12,7 @@
             </a>
             <a class="navbar-brand" href="/"></a>
         </div>
-        <div class="navbar-center">Estudiantes - Pasantias LICOM <strong>({{ Auth::user()->getSemestre() }})</strong></div>
+        <div class="navbar-center">Estudiante - Pasantías LICOM <strong>({{ Auth::user()->getSemestre() }})</strong></div>
         <div class="navbar-collapse collapse">
             <!-- BEGIN TOP NAVIGATION MENU -->
             <ul class="nav navbar-nav pull-right header-menu">

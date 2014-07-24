@@ -41,7 +41,7 @@
 <body align="center">
 
 
-    <h1><strong>Listado de </strong> pasantias 
+    <h1><strong>Listado de </strong> pasantías 
                         @if($status != 'total')
                         "{{ $status }}s"
                         @endif

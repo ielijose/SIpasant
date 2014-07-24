@@ -15,7 +15,7 @@
 
 <div id="main-content">
     <div class="page-title"> <i class="icon-custom-left"></i>
-        <h3><strong>Registro</strong> de pasantias</h3>
+        <h3><strong>Registro</strong> de pasantías</h3>
     </div>
     <div class="row">
         <div class="col-md-12">
@@ -23,7 +23,7 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-12">
-                            <h3><strong>Registrar</strong> Pasantia</h3>
+                            <h3><strong>Registrar</strong> Pasantía</h3>
                             <p>Completa el siguiente formulario:</p>
                             <!-- BEGIN FORM WIZARD WITH VALIDATION -->
                             <form class="form-wizard" action="/registrar" method="POST">

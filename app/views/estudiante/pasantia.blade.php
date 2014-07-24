@@ -14,14 +14,14 @@
             @endif
 
             @if(!isset($pasantia))
-                <h2>Esta pasantia no existe.</h2>
+                <h2>Esta pasantía no existe.</h2>
             @else
 
     
             <div class="page-title">
                 <i class="icon-custom-left"></i>
                 <h3>
-                    <img class="m-r-20" src="/assets/img/various/invoice.png" alt="invoice"><strong>Pasantia n° {{ $pasantia->id }} </strong> 
+                    <img class="m-r-20" src="/assets/img/various/invoice.png" alt="invoice"><strong>Pasantía n° {{ $pasantia->id }} </strong> 
                     <small>{{ $pasantia->created_at }}</small></h3>
 
                     @if(isset($current) && $current->estado == 'aceptado' && $current->id == $pasantia->id)
@@ -34,7 +34,7 @@
                         <div class="tabcordion">
                             <ul id="myTab" class="nav nav-tabs">
                                 <li class="active"><a href="#estudiante" data-toggle="tab">Estudiante</a></li>
-                                <li><a href="#pasantia" data-toggle="tab">Pasantia</a></li>
+                                <li><a href="#pasantia" data-toggle="tab">Pasantía</a></li>
                                 @if(isset($pasantia->proceso->id))
                                 <li><a href="#procesos" data-toggle="tab">Procesos 
                                     <span class="m-l-10 badge badge-primary">{{ $pasantia->proceso->getStep() }}</span></a>

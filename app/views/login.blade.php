@@ -35,7 +35,7 @@
 		</div>
 
 		<div class="col-md-8">
-			<h1>Sistema de pasantias LICOM</h1>
+			<h1>Sistema de pasantías LICOM</h1>
 		</div>
 
 		<div class="col-md-2">

@@ -4,7 +4,7 @@
 
 <div id="main-content">
     <div class="page-title"> <i class="icon-custom-left"></i>
-        <h2>Pasantias <small> listado completo.</small></h2>
+        <h2>Pasantías <small> listado completo.</small></h2>
     </div>
     <div class="row">
         <div class="col-md-12">

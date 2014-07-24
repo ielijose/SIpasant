@@ -26,7 +26,7 @@
 
             <div class="page-title">
                 <i class="icon-custom-left"></i>
-                <h3><img class="m-r-20" src="/assets/img/various/invoice.png" alt="invoice"><strong>Pasantia n° {{ $pasantia->id }} </strong> 
+                <h3><img class="m-r-20" src="/assets/img/various/invoice.png" alt="invoice"><strong>Pasantía n° {{ $pasantia->id }} </strong> 
                     <small>{{ $pasantia->created_at }}</small></h3>
                 <br>
             </div>

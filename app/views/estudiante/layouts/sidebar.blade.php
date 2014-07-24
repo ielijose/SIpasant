@@ -6,7 +6,7 @@
             </li>
 
             <li>
-                <a href="/pasantias"><i class="fa fa-file-text-o"></i><span class="sidebar-text">Pasantias</span></a>
+                <a href="/pasantias"><i class="fa fa-file-text-o"></i><span class="sidebar-text">Pasantías</span></a>
             </li>
     
             @if(isset($current) && $current->estado == 'aceptado')
